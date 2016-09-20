@@ -194,5 +194,4 @@ interface RepositoryInterface
      * @return $this
      */
     private function applyCriteria();
-    }    
 }
