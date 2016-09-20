@@ -132,7 +132,7 @@ interface RepositoryInterface
      * 
      * @return $this
      */
-    private function applyNestedData();
+    public function applyNestedData();
 
     /**
      * Standard setter for class property $query
@@ -156,7 +156,7 @@ interface RepositoryInterface
      * @return $this
      * @throws RepositoryException
      */
-    private function makeModel();
+    public function makeModel();
 
     /**
      * Standard setter for class property $model
@@ -164,7 +164,7 @@ interface RepositoryInterface
      * @param \Illuminate\Database\Eloquent\Model
      * @return  $this
      */
-    private function setModel( Model $model );
+    public function setModel( Model $model );
 
     /**
      * Standard getter
@@ -193,5 +193,5 @@ interface RepositoryInterface
      * 
      * @return $this
      */
-    private function applyCriteria();
+    public function applyCriteria();
 }
