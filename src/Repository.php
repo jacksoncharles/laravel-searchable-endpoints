@@ -285,7 +285,7 @@ abstract class Repository {
      * @param \Illuminate\Database\Eloquent\Model
      * @return  $this
      */
-    private function setModel( Model $model )
+    public function setModel( Model $model )
     {
       $this->model = $model;
 
