@@ -8,7 +8,7 @@ interface RepositoryInterface
      *
      * @return  string
      */
-    abstract function model();
+    public function model();
 
     /**
      * Returns a collection of models
