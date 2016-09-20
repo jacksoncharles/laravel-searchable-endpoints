@@ -1,4 +1,4 @@
-<?php namespace WebConfection\LaravelRepositories\Repositories;
+<?php namespace WebConfection\LaravelRepositories;
 
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
@@ -8,9 +8,7 @@ use WebConfection\LaravelRepositories\Interfaces\AbstractInterface;
 use WebConfection\LaravelRepositories\Exceptions\RepositoryException;
 use WebConfection\LaravelRepositories\Traits\ParameterTrait;
 
-
-
-abstract class AbstractRepository {
+abstract class Repository {
 
     use ParameterTrait;
     
