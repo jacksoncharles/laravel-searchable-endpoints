@@ -1,7 +1,7 @@
-<?php namespace HomeBargain\LaravelRepo\Criteria;
+<?php namespace WebConfection\LaravelRepo\Criteria;
 
-use HomeBargain\LaravelRepo\Interfaces\CriteriaInterface;
-use HomeBargain\LaravelRepo\Criteria\Criteria;
+use WebConfection\LaravelRepo\Interfaces\CriteriaInterface;
+use WebConfection\LaravelRepo\Criteria\Criteria;
 
 class LessThanCriteria extends Criteria implements CriteriaInterface {
 

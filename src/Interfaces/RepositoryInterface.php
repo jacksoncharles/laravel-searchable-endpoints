@@ -1,4 +1,4 @@
-<?php namespace HomeBargain\LaravelRepo\Interfaces;
+<?php namespace WebConfection\LaravelRepo\Interfaces;
 
 interface RepositoryInterface 
 {

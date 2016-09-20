@@ -1,12 +1,12 @@
-<?php namespace HomeBargain\LaravelRepo\Repositories;
+<?php namespace WebConfection\LaravelRepo\Repositories;
 
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-use HomeBargain\LaravelRepo\Interfaces\AbstractInterface;
-use HomeBargain\LaravelRepo\Exceptions\RepositoryException;
-use HomeBargain\LaravelRepo\Traits\ParameterTrait;
+use WebConfection\LaravelRepo\Interfaces\AbstractInterface;
+use WebConfection\LaravelRepo\Exceptions\RepositoryException;
+use WebConfection\LaravelRepo\Traits\ParameterTrait;
 
 
 
@@ -55,21 +55,6 @@ abstract class AbstractRepository {
      * @var boolean
      */    
     protected $softdeletes = false;
-
-    /**
-     * Flag to deltermine of the current model uses the Base64UploadTrait enabling us
-     * to upload files.
-     *
-     * @var boolean
-     */    
-    protected $base64Upload = false;
-
-    /**
-     * Holds an array of key/value pairs that represent a sub folder and height of a resized image
-     *
-     * @var  array
-     */
-    public $imageResize = array();
     
     /**
      * Must be called by any repository that extends this class.
@@ -84,9 +69,6 @@ abstract class AbstractRepository {
 
         $modelTraits = class_uses( $this->getModel() );
         $this->softDeletes = array_key_exists( 'Illuminate\Database\Eloquent\SoftDeletes', $modelTraits );
-
-        $repositoryTraits = class_uses( $this );
-        $this->base64Upload = array_key_exists( 'HomeBargain\LaravelRepo\Traits\Base64UploadTrait', $repositoryTraits );
     }
 
     /**
@@ -137,18 +119,7 @@ abstract class AbstractRepository {
      */
     public function create( array $data ) 
     {
-        $response = $this->setModel( $this->getModel()->create( $data ) );
-
-        if( $response )
-        {
-            if( $this->base64Upload )
-            {
-                $data = $this->formatBase64Uploads( $data );
-                
-                return $this->getModel()->update( $data );
-            }
-        }
-        return $response;
+        return $this->setModel( $this->getModel()->create( $data ) );
     }
 
     /**
@@ -157,11 +128,6 @@ abstract class AbstractRepository {
     public function update( $id, array $data ) 
     {
         $this->setModel( $this->getModel()->findOrFail( $id ) );
-
-        if( $this->base64Upload )
-        {
-            $data = $this->formatBase64Uploads( $data );
-        }
 
         return $this->getModel()->update( $data );
     }

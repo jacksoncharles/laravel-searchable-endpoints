@@ -1,6 +1,6 @@
-<?php namespace HomeBargain\LaravelRepo\Criteria;
+<?php namespace WebConfection\LaravelRepo\Criteria;
 
-use HomeBargain\LaravelRepo\Interfaces\CriteriaInterface;
+use WebConfection\LaravelRepo\Interfaces\CriteriaInterface;
 
 class Criteria {
 

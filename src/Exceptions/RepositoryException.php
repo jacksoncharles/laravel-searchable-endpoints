@@ -1,4 +1,4 @@
-<?php namespace HomeBargain\LaravelRepo\Exceptions;
+<?php namespace WebConfection\LaravelRepo\Exceptions;
 
 use Exception;
 

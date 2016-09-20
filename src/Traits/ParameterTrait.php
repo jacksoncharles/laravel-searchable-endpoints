@@ -1,18 +1,18 @@
-<?php namespace HomeBargain\LaravelRepo\Traits;
+<?php namespace WebConfection\LaravelRepo\Traits;
 
-use HomeBargain\LaravelRepo\Exceptions\RepositoryException;
+use WebConfection\LaravelRepo\Exceptions\RepositoryException;
 
-use HomeBargain\LaravelRepo\Criteria\BetweenCriteria;
-use HomeBargain\LaravelRepo\Criteria\EqualsCriteria;
-use HomeBargain\LaravelRepo\Criteria\GreaterThanCriteria;
-use HomeBargain\LaravelRepo\Criteria\GreaterThanEqualsCriteria;
-use HomeBargain\LaravelRepo\Criteria\InArrayCriteria;
-use HomeBargain\LaravelRepo\Criteria\LessThanCriteria;
-use HomeBargain\LaravelRepo\Criteria\LessThanEqualsCriteria;
-use HomeBargain\LaravelRepo\Criteria\LikeCriteria;
-use HomeBargain\LaravelRepo\Criteria\NotLikeCriteria;
-use HomeBargain\LaravelRepo\Criteria\OrEqualsCriteria;
-use HomeBargain\LaravelRepo\Criteria\OrLikeCriteria;
+use WebConfection\LaravelRepo\Criteria\BetweenCriteria;
+use WebConfection\LaravelRepo\Criteria\EqualsCriteria;
+use WebConfection\LaravelRepo\Criteria\GreaterThanCriteria;
+use WebConfection\LaravelRepo\Criteria\GreaterThanEqualsCriteria;
+use WebConfection\LaravelRepo\Criteria\InArrayCriteria;
+use WebConfection\LaravelRepo\Criteria\LessThanCriteria;
+use WebConfection\LaravelRepo\Criteria\LessThanEqualsCriteria;
+use WebConfection\LaravelRepo\Criteria\LikeCriteria;
+use WebConfection\LaravelRepo\Criteria\NotLikeCriteria;
+use WebConfection\LaravelRepo\Criteria\OrEqualsCriteria;
+use WebConfection\LaravelRepo\Criteria\OrLikeCriteria;
 
 
 trait ParameterTrait {
