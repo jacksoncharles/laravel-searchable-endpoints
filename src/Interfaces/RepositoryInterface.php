@@ -112,7 +112,8 @@ interface RepositoryInterface
     public function lists($value, $key, $distinct = false );
 
     /**
-     * Standard setter for private property $nestedData
+     * Accepts an array of nested data names to be retrieved with the
+     * query
      * 
      * @param array $nestedData
      * @return $this
@@ -120,19 +121,11 @@ interface RepositoryInterface
     public function setNestedData( array $nestedData );
 
     /**
-     * Standard getter for privater property $nestedData
+     * Returns an array of nested data names associated to the query.
      * 
      * @return array
      */
     public function getNestedData();
-
-    /**
-     * Loop through the class property $nestedData and apply to the
-     * class property $query which is an instance of the Eloquent query object.
-     * 
-     * @return $this
-     */
-    public function applyNestedData();
 
     /**
      * Standard setter for class property $query
@@ -150,15 +143,6 @@ interface RepositoryInterface
     public function getQuery();
 
     /**
-     * Create an instance of the associated model retrieved from the abstract method "model" and assign to class
-     * property $model
-     * 
-     * @return $this
-     * @throws RepositoryException
-     */
-    public function makeModel();
-
-    /**
      * Standard setter for class property $model
      * 
      * @param \Illuminate\Database\Eloquent\Model
@@ -167,7 +151,7 @@ interface RepositoryInterface
     public function setModel( Model $model );
 
     /**
-     * Standard getter
+     * Standard getter for the class property $model
      * 
      * @return \Illuminate\Database\Eloquent\Model
      */
@@ -181,17 +165,10 @@ interface RepositoryInterface
     public function getCriteria();
         
     /**
-     * Push criteria onto the class property $criteria
+     * Accepts a criteria object and adds to the eloquent query
      * 
      * @param Criteria $criteria
      * @return $this
      */
     public function pushCriteria( $criteria );
-
-    /**
-     * Apply class property $criteria to the current query held inside class property $query
-     * 
-     * @return $this
-     */
-    public function applyCriteria();
 }
