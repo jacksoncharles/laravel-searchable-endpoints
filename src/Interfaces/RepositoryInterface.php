@@ -148,7 +148,7 @@ interface RepositoryInterface
      * @param \Illuminate\Database\Eloquent\Model
      * @return  $this
      */
-    public function setModel( Model $model );
+    //public function setModel( Model $model );
 
     /**
      * Standard getter for the class property $model
