@@ -5,7 +5,7 @@ Abstract repository built for Laravel/Lumen APIs. The solution contains generic 
 ## Usage
 
 ```
-use WebConfection\LaravelRepo\Repositories\AbstractRepository;
+use WebConfection\LaravelRepositories\Repositories\AbstractRepository;
 
 class Foo extends AbstractRepository {
     

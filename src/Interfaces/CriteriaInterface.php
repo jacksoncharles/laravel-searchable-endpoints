@@ -1,4 +1,4 @@
-<?php namespace WebConfection\LaravelRepo\Interfaces;
+<?php namespace WebConfection\LaravelRepositories\Interfaces;
 
 interface CriteriaInterface 
 {

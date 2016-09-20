@@ -23,8 +23,8 @@ Install with composer. Until such time as we have a packages solution in place a
 Extend a repository to use the abtract repository as follows and include any traits you wish.
 
 ```
-    use HomeBargain\LaravelRepo\Repositories\AbstractRepository;
-    use HomeBargain\LaravelRepo\Interfaces\RepositoryInterface;
+    use HomeBargain\LaravelRepositories\Repositories\AbstractRepository;
+    use HomeBargain\LaravelRepositories\Interfaces\RepositoryInterface;
 
     class MyRepository extends AbstractRepository implements RepositoryInterface
     {

@@ -1,7 +1,7 @@
-<?php namespace WebConfection\LaravelRepo\Criteria;
+<?php namespace WebConfection\LaravelRepositories\Criteria;
 
-use WebConfection\LaravelRepo\Interfaces\CriteriaInterface;
-use WebConfection\LaravelRepo\Criteria\Criteria;
+use WebConfection\LaravelRepositories\Interfaces\CriteriaInterface;
+use WebConfection\LaravelRepositories\Criteria\Criteria;
 
 class OrLikeCriteria extends Criteria implements CriteriaInterface {
 

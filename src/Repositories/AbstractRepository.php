@@ -1,12 +1,12 @@
-<?php namespace WebConfection\LaravelRepo\Repositories;
+<?php namespace WebConfection\LaravelRepositories\Repositories;
 
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-use WebConfection\LaravelRepo\Interfaces\AbstractInterface;
-use WebConfection\LaravelRepo\Exceptions\RepositoryException;
-use WebConfection\LaravelRepo\Traits\ParameterTrait;
+use WebConfection\LaravelRepositories\Interfaces\AbstractInterface;
+use WebConfection\LaravelRepositories\Exceptions\RepositoryException;
+use WebConfection\LaravelRepositories\Traits\ParameterTrait;
 
 
 
