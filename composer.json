@@ -1,0 +1,24 @@
+{
+    "name": "homebargain/laravel-repositories",
+    "description": "Abstract repository",
+    "keywords": ["repositories,repository"],
+    "authors": [
+        {
+            "name": "Charles Jackson",
+            "email": "charles.jackson@tjmorris.co.uk"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*",
+        "illuminate/events": "^5.2",
+        "illuminate/database": "^5.2"
+    },
+    "require": {
+        "eventviva/php-image-resize": "1.5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "HomeBargain\\LaravelRepo\\": "src"
+        }
+    }
+}
