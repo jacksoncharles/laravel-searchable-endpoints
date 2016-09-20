@@ -133,7 +133,7 @@ interface RepositoryInterface
      * @param  Illuminate\Database\Eloquent\Builder $query
      * @return $this
      */
-    public function setQuery( Builder $query );
+    //public function setQuery( Builder $query );
 
     /**
      * Standard getter for class property $query
