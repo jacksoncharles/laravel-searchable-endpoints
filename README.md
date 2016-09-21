@@ -6,7 +6,7 @@ Simple and easy implementation of the [repository pattern](https://bosnadev.com/
 Install with composer.
 
 ```
-require laravel-searchable-repositories
+require searchable-laravel-repositories
 ```
 
 ## Usage
