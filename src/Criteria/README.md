@@ -28,6 +28,7 @@ All parameters can be set using multi-dimensional arrays as described in the [pa
 ### 11. OrLikeCriteris
 
 ## setOrder()
+You can set the order of a query using a key/value pair of column/direction for example ['created_at' => 'desc'].
 
 ### 1. OrderByCriteria
 
