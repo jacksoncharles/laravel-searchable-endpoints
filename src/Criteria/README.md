@@ -2,28 +2,28 @@
 
 Package comes complete with a generic set of criteria objects that can be used when build a query. They are compatible with the following repository methods:
 
-## BetweenCriteria
+### BetweenCriteria
 
-## EqualsCriteria
+### EqualsCriteria
 
-## GreaterThanCriteria
+### GreaterThanCriteria
 
-## GreaterThanEqualsCriteria
+### GreaterThanEqualsCriteria
 
-## InArrayCriteria
+### InArrayCriteria
 
-## LessThanCriteria
+### LessThanCriteria
 
-## LessThanEqualsCriteria
+### LessThanEqualsCriteria
 
-## LikeCriteria
+### LikeCriteria
 
-## NotLikeCriteria
+### NotLikeCriteria
 
-## OrEqualsCriteris
+### OrEqualsCriteris
 
-## OrLikeCriteris
+### OrLikeCriteris
 
-## OrderByCriteria
+### OrderByCriteria
 
 
