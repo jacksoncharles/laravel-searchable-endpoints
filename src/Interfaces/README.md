@@ -1,3 +1,5 @@
+#Interfaces
+
 ## Repository Interface
 Implement this interface on any repository that extends the base abstract repository and
 create the one mandatory method "model()". For example;
