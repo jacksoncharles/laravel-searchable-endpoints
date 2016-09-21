@@ -1,8 +1,6 @@
 # Laravel/Lumen Searchable Repositories
-Easy implementation of the [repository pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for Laravel/Lumen. Provides advanced searching of your API endpoints; Including but not limited too:
-
-
-[create an anchor](#anchors-in-markdown)
+Easy implementation of the [Repository Pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for 
+Laravel/Lumen with additonal methods for advanced searching that are easily accessible using the [Parameter Trait](https://github.com/WebConfection/package-laravel-repositories/tree/master/src/Traits).
 
 1. [Search Parameters](https://github.com/WebConfection/package-laravel-repositories/tree/master/src/Traits)
 2. Nested data requirements
