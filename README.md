@@ -10,7 +10,8 @@ require laravel-searchable-repositories
 ```
 
 ## Usage
-Extend a repository to use the abtract repository as follows and include any traits you wish.
+Extend your repository to use the abtract repository and include the "model()" method returning
+a namespaced string to your associated model.
 
 ```
     use WebConfection\LaravelRepositories\Repository;
@@ -33,7 +34,7 @@ Extend a repository to use the abtract repository as follows and include any tra
 ```
 
 ## Methods
-Methods are not limited the listing below; and further details can be found inside the [interface](https://github.com/WebConfection/laravel-repositories/blob/master/src/Interfaces/AbstractInterface.php)
+Methods are not limited to the listing below; Further details can be found inside the [interface](https://github.com/WebConfection/laravel-repositories/blob/master/src/Interfaces/AbstractInterface.php).
 
 ```
     public function all( $columns = array('*'), $withTrash = false);
@@ -176,6 +177,54 @@ The key contains any of the values listed in their associated value(s)
             )
     );
 ``` 
+
+###
+Example Implmenetation
+In the following controller implementation I have bound an interface to a repository and injected
+the repository into the construct on my controller.
+
+```
+...
+... ...
+use WebConfection\LaravelRepositories\Criteria\OrderByCriteria;
+
+class FooBarsController extends Controller
+{
+    public function __construct( FooBarInterface $fooBarRepository )
+    {
+       $this->repository = $fooBarRepository;
+    }
+
+    /**
+     * Return a JSON encoded listing including filters
+     *
+     * @return array
+     */
+    public function index()
+    {
+
+        if( Input::has('parameters') ) $this->repository->setParameters( Input::get('parameters') );
+        
+        if( Input::has('nested') ) $this->repository->setNestedData( Input::get('nested') );
+
+        $order = Input::has('order') ? Input::get('order') : ['id' => 'asc'];
+        $this->repository->pushCriteria( new OrderByCriteria( ['column' => key( $order ), 'direction' => array_shift( $order ) ]) );
+  
+        $columns = Input::has('columns') ? Input::get('columns') : ['*'];
+        if( Input::has('rows') && (int)Input::get('rows') > 0 )
+        {
+            $data = $this->repository->paginate( Input::get('rows'), $columns, Input::has('trash') )->toArray();
+        } 
+        else
+        {
+            $data['data'] = $this->repository->all( $columns, Input::has('trash') )->toArray();
+        }
+
+        return response()->json( $data, 200 );
+    }
+```
+
+
 
 ### Todo
 1. Unit tests
