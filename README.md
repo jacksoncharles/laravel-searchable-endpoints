@@ -65,7 +65,7 @@ The ParameterTrait is enabled by default and allows you to pass a multi-dimensio
 
 The following comparison operators are supported
 
-##### like
+#### like
 All keys must contain their associated value.
 
 ```
@@ -79,7 +79,7 @@ All keys must contain their associated value.
             )
     );
 ```
-##### or_like
+#### or_like
 Any of the keys contain any their associated value.
 
 ```
@@ -94,7 +94,7 @@ Any of the keys contain any their associated value.
     );
 ```
 
-##### not_like
+#### not_like
 Non of the keys contain their associated value.
 
 ```
@@ -109,7 +109,7 @@ Non of the keys contain their associated value.
     );
 ```
 
-##### equal
+#### equal
 All keys must match their associated value. 
 
 ```
@@ -120,7 +120,7 @@ All keys must match their associated value.
             )
     );
 ``` 
-##### gte
+#### gte
 All keys must contain a value greater than or equal too their associated value.
 
 ```
@@ -131,7 +131,7 @@ All keys must contain a value greater than or equal too their associated value.
             )
     );
 ```     
-##### gt
+#### gt
 All keys must contain a value greater than their associated value.
 
 ```
@@ -142,7 +142,7 @@ All keys must contain a value greater than their associated value.
             )
     );
 ```     
-##### lte
+#### lte
 All keys must contain a value less than or equal too their associated value.
 
 ```
@@ -153,7 +153,7 @@ All keys must contain a value less than or equal too their associated value.
             )
     );
 ```     
-##### lt
+#### lt
 All keys must contain a value less than their associated value.
 
 ```
@@ -164,7 +164,7 @@ All keys must contain a value less than their associated value.
             )
     );
 ```     
-##### in
+#### in
 The key contains any of the values listed in their associated value(s)
 
 ```
@@ -178,14 +178,12 @@ The key contains any of the values listed in their associated value(s)
     );
 ``` 
 
-###
-Example Implmenetation
+## Example Implmenetation
 In the following controller implementation I have bound an interface to a repository and injected
 the repository into the construct on my controller.
 
 ```
 ...
-... ...
 use WebConfection\LaravelRepositories\Criteria\OrderByCriteria;
 
 class FooBarsController extends Controller
