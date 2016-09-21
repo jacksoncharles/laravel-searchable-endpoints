@@ -1,6 +1,12 @@
 # Laravel/Lumen Searchable Repositories
 Simple and easy implementation of the [repository pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for Laravel/Lumen with generic
-[criteria objects](https://github.com/WebConfection/laravel-repositories/tree/master/src/Criteria) and a [parameter trait](https://github.com/WebConfection/package-laravel-repositories/tree/master/src/Traits) specifically designed to provide advanced search capability of your API endpoints.
+[criteria objects](https://github.com/WebConfection/laravel-repositories/tree/master/src/Criteria) and a [parameter trait](https://github.com/WebConfection/package-laravel-repositories/tree/master/src/Traits) specifically designed to provide advanced search capability of your API endpoints. YOU CAN SPECIFY
+
+
+1. Search parameters
+2. Nested data requirements
+3. Order by clause
+4. Pagination
 
 ## Installation
 Install with composer.
