@@ -48,6 +48,20 @@ abstract class Repository {
     private $query = null;
 
     /**
+     * The number of rows in a paginated list
+     *
+     * @var integer
+     */    
+    private $rows = 10;
+
+    /**
+     * The columns to be returned
+     *
+     * @var string
+     */    
+    private $columns = '*';
+
+    /**
      * Flag to deltermine of the current model uses the softDelete trait enabling us to
      * retrieved "trashed" data.
      *
@@ -349,6 +363,52 @@ abstract class Repository {
     }
 
     /**
+     * Standard setter for class property
+     * 
+     * @param Integer Number of rows
+     * @return $this
+     */
+    public function setRows( $rows )
+    {
+        $this->rows = $rows;
+
+        return $this;
+    }
+
+    /**
+     * Standard getter for class property $rows
+     * 
+     * @return integer $rows
+     */
+    private function getRows()
+    {
+        return (integer)$this->rows;
+    }
+
+   /**
+     * Standard setter for class property
+     * 
+     * @param Integer Columns to be returned
+     * @return $this
+     */
+    public function setColumns( $columns )
+    {
+        $this->columns = $columns;
+
+        return $this;
+    }
+
+    /**
+     * Standard getter for class property $columns
+     * 
+     * @return integer $rows
+     */
+    private function getColumns()
+    {
+        return (integer)$this->columns;
+    }
+
+    /**
      * Apply the criteria to the current query.
      * 
      * @return $this
@@ -364,4 +424,6 @@ abstract class Repository {
 
         return $this;
     }
+
+
 }

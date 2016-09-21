@@ -121,36 +121,6 @@ interface RepositoryInterface
     public function setNestedData( array $nestedData );
 
     /**
-     * Returns an array of nested data names associated to the query.
-     * 
-     * @return array
-     */
-    public function getNestedData();
-
-    /**
-     * Standard setter for class property $query
-     *
-     * @param  Illuminate\Database\Eloquent\Builder $query
-     * @return $this
-     */
-    //public function setQuery( Builder $query );
-
-    /**
-     * Standard getter for class property $query
-     * 
-     * @return Illuminate\Database\Builder
-     */
-    public function getQuery();
-
-    /**
-     * Standard setter for class property $model
-     * 
-     * @param \Illuminate\Database\Eloquent\Model
-     * @return  $this
-     */
-    //public function setModel( Model $model );
-
-    /**
      * Standard getter for the class property $model
      * 
      * @return \Illuminate\Database\Eloquent\Model
@@ -158,17 +128,18 @@ interface RepositoryInterface
     public function getModel();
 
     /**
-     * Standard getter for class property $criteria
-     * 
-     * @return array
-     */
-    public function getCriteria();
-        
-    /**
-     * Accepts a criteria object and adds to the eloquent query
-     * 
-     * @param Criteria $criteria
+     * Standard setter for class property $rows
+     *
+     * @param integer $rows
      * @return $this
-     */
-    public function pushCriteria( $criteria );
+     */ 
+    public function setRows();
+
+    /**
+     * Standard setter for class property $columns
+     *
+     * @param string $columns 
+     * @return $this
+     */ 
+    public function setColumns();
 }
