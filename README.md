@@ -4,10 +4,15 @@ Laravel/Lumen. In addition to the traditional repository methods there are furth
 on advanced searching requirements.
 
 1. `setParameters()`
+
 Can be populated with multi-dimensional arrays as described in the [Parameter Trait](https://github.com/WebConfection/package-laravel-repositories/tree/master/src/Traits).
+
 2. `setNestedData()`
+
 Accepts an array of nested data names using DOT notation for deep nesting.
+
 3. `setOrder()`
+
 Accepts a key/value pair of column/order for example `['created_at' => 'DESC']`
 
 ## Installation
