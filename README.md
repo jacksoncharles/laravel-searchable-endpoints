@@ -15,7 +15,7 @@ require searchable-laravel-repositories
 ```
 
 ## Usage
-Extend your repository to use the abtract repository and include the "model()" method returning
+Extend your repository to use the abtract Repository and implement the RepositoryInterface and include the "model()" method returning
 a namespaced string to your associated model.
 
 ```
