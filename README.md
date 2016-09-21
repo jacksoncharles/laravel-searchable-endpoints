@@ -1,11 +1,14 @@
 # Laravel/Lumen Searchable Repositories
 Easy implementation of the [Repository Pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for 
 Laravel/Lumen. In addition to the traditional repository methods there are further methods focused
-on advanced searching that can be populated with multi-dimensional arrays as described in the [Parameter Trait](https://github.com/WebConfection/package-laravel-repositories/tree/master/src/Traits).
+on advanced searching requirements.
 
 1. `setParameters()`
+Can be populated with multi-dimensional arrays as described in the [Parameter Trait](https://github.com/WebConfection/package-laravel-repositories/tree/master/src/Traits).
 2. `setNestedData()`
+Accepts an array of nested data names using DOT notation for deep nesting.
 3. `setOrder()`
+Accepts a key/value pair of column/order for example `['created_at' => 'DESC']`
 
 ## Installation
 Install with composer.
