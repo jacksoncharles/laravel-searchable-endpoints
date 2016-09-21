@@ -4,6 +4,7 @@ Simple and easy implementation of the [repository pattern](https://bosnadev.com/
 
 1. Search parameters
 2. Nested data requirements
+3. Column requirements
 3. Order by clause
 4. Pagination
 
@@ -210,8 +211,7 @@ class FooBarsController extends Controller
         
         if( Input::has('nested') ) $this->repository->setNestedData( Input::get('nested') );
 
-        $order = Input::has('order') ? Input::get('order') : ['id' => 'asc'];
-        $this->repository->pushCriteria( new OrderByCriteria( ['column' => key( $order ), 'direction' => array_shift( $order ) ]) );
+        if( Input::has('order') ) $this->repository->setOrder( Input::get('order') );
   
         $columns = Input::has('columns') ? Input::get('columns') : ['*'];
         if( Input::has('rows') && (int)Input::get('rows') > 0 )

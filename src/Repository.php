@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use WebConfection\LaravelRepositories\Interfaces\AbstractInterface;
 use WebConfection\LaravelRepositories\Exceptions\RepositoryException;
 use WebConfection\LaravelRepositories\Traits\ParameterTrait;
+use WebConfection\LaravelRepositories\Criteria\OrderByCriteria;
 
 abstract class Repository {
 
@@ -330,6 +331,19 @@ abstract class Repository {
     public function pushCriteria( $criteria ) 
     {
         array_push( $this->criteria, $criteria );
+
+        return $this;
+    }
+
+    /**
+     * Push criteria onto the class property
+     * 
+     * @param Criteria $criteria
+     * @return $this
+     */
+    public function setOrder( $criteria ) 
+    {
+        $this->pushCriteria( new OrderByCriteria( ['column' => key( $criteria ), 'direction' => array_shift( $criteria ) ]) );
 
         return $this;
     }
