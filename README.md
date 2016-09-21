@@ -178,7 +178,7 @@ The key contains any of the values listed in their associated value(s)
     );
 ``` 
 
-## Example Implmenetation
+## Example Implementation
 In the following controller implementation I have bound an interface to a repository and injected
 the repository into the construct of my controller.
 
