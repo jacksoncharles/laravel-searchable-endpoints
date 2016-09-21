@@ -1,32 +1,22 @@
-# Laravel/Lumen Repositories
-Simple and easy implementation of the repository pattern for Laravel/Lumen.
-
-An abstract class including predefined [criteria objects](https://github.com/HomeBargains/package-laravel-repositories/tree/master/src/Criteria) that can be expanded
-upon for any implementation specific requirements plus two useful traits; The [parameter trait](https://github.com/HomeBargains/package-laravel-repositories/tree/master/src/Traits) and the [base64 trait](https://github.com/HomeBargains/package-laravel-repositories/tree/master/src/Traits), designed to facilitate API development.
+# Laravel/Lumen Searchable Repositories
+Simple and easy implementation of the repository pattern for Laravel/Lumen with generic
+[criteria objects](https://github.com/WebConfection/laravel-repositories/tree/master/src/Criteria) and a parameter trait](https://github.com/WebConfection/package-laravel-repositories/tree/master/src/Traits) specifically designed to provide enhanced search capability of your API endpoints.
 
 ## Installation
-Install with composer. Until such time as we have a packages solution in place add the repository to your composer.json file.
+Install with composer.
 
 ```
-    "repositories": [
-        {
-            "url": "https://github.com/HomeBargains/package-laravel-repositories.git",
-            "type": "git"
-        }
-    ],
-    "require": {
-        "homebargain/laravel-repositories": "~0.5"
-    }
-
+require laravel-searchable-repositories
 ```
+
 ## Usage
 Extend a repository to use the abtract repository as follows and include any traits you wish.
 
 ```
-    use HomeBargain\LaravelRepositories\Repositories\AbstractRepository;
-    use HomeBargain\LaravelRepositories\Interfaces\RepositoryInterface;
+    use WebConfection\LaravelRepositories\Repository;
+    use WebConfection\LaravelRepositories\Interfaces\RepositoryInterface;
 
-    class MyRepository extends AbstractRepository implements RepositoryInterface
+    class MyRepository extends Repository implements RepositoryInterface
     {
         /**
          * Specify Model class name
@@ -43,7 +33,7 @@ Extend a repository to use the abtract repository as follows and include any tra
 ```
 
 ## Methods
-Methods are not limited the listing below; and further details can be found inside the [interface](https://github.com/HomeBargains/package-laravel-repositories/blob/master/src/Interfaces/AbstractInterface.php)
+Methods are not limited the listing below; and further details can be found inside the [interface](https://github.com/WebConfection/laravel-repositories/blob/master/src/Interfaces/AbstractInterface.php)
 
 ```
     public function all( $columns = array('*'), $withTrash = false);
