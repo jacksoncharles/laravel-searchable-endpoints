@@ -1,29 +1,33 @@
 # Criteria Objects
 
-Package comes complete with a generic set of criteria objects that can be used when build a query. They are compatible with the following repository methods:
+Comes complete with 12 generic criteria objects that can be used when build a query and are accessible via two repository methods.
 
-### BetweenCriteria
+## setParameters()
 
-### EqualsCriteria
+### 1. BetweenCriteria
 
-### GreaterThanCriteria
+### 2. EqualsCriteria
 
-### GreaterThanEqualsCriteria
+### 3. GreaterThanCriteria
 
-### InArrayCriteria
+### 4. GreaterThanEqualsCriteria
 
-### LessThanCriteria
+### 5. InArrayCriteria
 
-### LessThanEqualsCriteria
+### 6. LessThanCriteria
 
-### LikeCriteria
+### 7. LessThanEqualsCriteria
 
-### NotLikeCriteria
+### 8. LikeCriteria
 
-### OrEqualsCriteris
+### 9. NotLikeCriteria
 
-### OrLikeCriteris
+### 10. OrEqualsCriteris
 
-### OrderByCriteria
+### 11. OrLikeCriteris
+
+## setOrder()
+
+### 1. OrderByCriteria
 
 
