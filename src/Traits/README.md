@@ -37,7 +37,7 @@ Non of the keys contain their associated value.
 
 ```
 	array(
-		'not_contain'	=>	array(
+		'not_like'	=>	array(
 			'Foo'	=>	array(
 				'Bar'
 			),
