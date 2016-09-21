@@ -1,4 +1,4 @@
-ƒ<?php namespace WebConfection\LaravelRepositories\Traits;
+<?php namespace WebConfection\LaravelRepositories\Traits;
 
 use WebConfection\LaravelRepositories\Exceptions\RepositoryException;
 
