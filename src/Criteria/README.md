@@ -1,6 +1,6 @@
 # Criteria Objects
 
-Comes complete with 12 generic criteria objects that can be used when build a query and are accessible via two repository methods.
+Comes complete with 12 generic criteria objects that can be used when building a query and are accessible via two repository methods `setParameters` and `setOrder`.
 
 ## setParameters()
 
