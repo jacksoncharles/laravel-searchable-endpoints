@@ -61,7 +61,7 @@ Methods are not limited to the listing below; Further details can be found insid
 ```
 
 ## Search Criteria
-The ParameterTrait is enabled by default and allows you to pass a multi-dimensional array of key/values into your repository using the "setParameters" method which will then be used to build the query. The key of each array maps to a searchable item (eg: database column) in permanent storage.
+The [parameter trait](https://github.com/WebConfection/package-laravel-repositories/tree/master/src/Traits) is enabled by default and allows you to pass a multi-dimensional array of key/values into your repository using the "setParameters" method which will then be used to build the query. The key of each array maps to a searchable item (eg: database column) in permanent storage.
 
 The following comparison operators are supported
 
@@ -180,7 +180,7 @@ The key contains any of the values listed in their associated value(s)
 
 ## Example Implmenetation
 In the following controller implementation I have bound an interface to a repository and injected
-the repository into the construct on my controller.
+the repository into the construct of my controller.
 
 ```
 ...
