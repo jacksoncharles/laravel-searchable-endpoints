@@ -94,36 +94,36 @@ abstract class Repository {
     /**
      * See HomeBargain\Illuminate\Interfaces\AbstractInterface
      */
-    public function all( $columns = array('*'), $withTrash = false )
+    public function all( $withTrash = false )
     {
         $this->applyCriteria(); // Apply any criteria
         $this->applyNestedData(); // Include any nested data
 
         if( $withTrash && $this->softDeletes )
         {
-            return $this->getQuery()->withTrashed()->get( $columns );
+            return $this->getQuery()->withTrashed()->get( $this->getColumns() );
         }
         else
         {
-            return $this->getQuery()->get( $columns );
+            return $this->getQuery()->get( $this->getColumns() );
         }
     }
 
     /**
      * See HomeBargain\Illuminate\Interfaces\AbstractInterface
      */
-    public function paginate( $rows = 10, $columns = array('*'), $withTrash = false )
+    public function paginate( $withTrash = false )
     {
         $this->applyCriteria(); // Apply any criteria
         $this->applyNestedData(); // Include any nested data
 
         if( $withTrash && $this->softDeletes )
         {
-            return $this->getQuery()->withTrashed()->paginate( $rows, $columns );    
+            return $this->getQuery()->withTrashed()->paginate( $this->getRows(), $this->getColumns() );    
         }
         else
         {
-            return $this->getQuery()->paginate( $rows, $columns );
+            return $this->getQuery()->paginate( $this->getRows(), $this->getColumns() );
         }
     }
 
@@ -164,40 +164,40 @@ abstract class Repository {
     /**
      * See HomeBargain\Illuminate\Interfaces\AbstractInterface
      */
-    public function find( $id, $columns = array('*') )
+    public function find( $id )
     {
         $this->setQuery( $this->getModel()->newQuery() ); // Fresh query
         $this->applyNestedData(); // Include any nested data
 
         if( $this->softDeletes )
         {
-            return $this->getQuery()->withTrashed()->findOrFail( $id, $columns );
+            return $this->getQuery()->withTrashed()->findOrFail( $id, $this->getColumns() );
         }
         else
         {
-            return $this->getQuery()->findOrFail( $id, $columns );
+            return $this->getQuery()->findOrFail( $id, $this->getColumns() );
         }
     }
 
     /**
      * See HomeBargain\Illuminate\Interfaces\AbstractInterface
      */
-    public function findBy( $attribute, $value, $columns = array('*') ) 
+    public function findBy( $attributes, $value ) 
     {
         $this->setQuery( $this->getModel()->newQuery() );
         $this->applyNestedData(); // Include any nested data
-        return $this->getQuery()->where( $attribute, '=', $value )->first( $columns );
+        return $this->getQuery()->where( $attribute, '=', $value )->first( $this->getColumns() );
     }
 
     /**
      * See HomeBargain\Illuminate\Interfaces\AbstractInterface
      */
-    public function first( $columns = array('*') ) 
+    public function first() 
     {
         $this->applyCriteria(); // Apply any criteria
         $this->applyNestedData(); // Include any nested data
 
-        return $this->getQuery()->first( $columns );
+        return $this->getQuery()->first( $this->getColumns() );
     }
 
     /**

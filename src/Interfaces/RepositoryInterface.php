@@ -18,7 +18,7 @@ interface RepositoryInterface
      *
      * @return Illuminate\Database\Eloquent\Collection
      */	
-    public function all( $columns = array('*'), $withTrash = false);
+    public function all( $withTrash = false);
  
     /**
      * Return a length-aware paginated list of model instances inside a collection.
@@ -28,7 +28,7 @@ interface RepositoryInterface
      * @param  boolean $withTrash
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */ 
-    public function paginate($perPage = 15, $columns = array('*'), $withTrash = false );
+    public function paginate( $withTrash = false );
  
     /**
      * Create a new instance in permanent storage and assign results to model property.
@@ -73,7 +73,7 @@ interface RepositoryInterface
      * 
      * @return Illuminate\Database\Eloquent\Model
      */
-    public function find($id, $columns = array('*'));
+    public function find($id);
  
      /**
      * Return the first occurence that matches the criteria passed.
@@ -83,7 +83,7 @@ interface RepositoryInterface
      * @param array $columns
      * @return mixed
      */
-    public function findBy( $field, $value, $columns = array('*') );
+    public function findBy( $attribute, $value );
 
     /**
      * Return the first occurence that matches the criteria passed.
@@ -92,7 +92,7 @@ interface RepositoryInterface
      * 
      * @return mixed
      */
-    public function first( $columns = array('*') );
+    public function first();
 
     /**
      * Return a count of the current query
