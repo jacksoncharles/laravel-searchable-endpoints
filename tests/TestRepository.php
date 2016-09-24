@@ -2,7 +2,7 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
-use HomeBargain\LaravelRepositories\Repositories\AbstractRepository;
+use WebConfection\LaravelRepositories\Repositories\AbstractRepository;
 
 class TestRepository extends AbstractRepository {
 

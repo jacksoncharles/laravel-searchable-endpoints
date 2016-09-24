@@ -85,14 +85,14 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      * 
      * @return string
      */
     abstract function model();
     
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function all( $withTrash = false )
     {
@@ -110,7 +110,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function paginate( $withTrash = false )
     {
@@ -128,7 +128,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function create( array $data ) 
     {
@@ -136,7 +136,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function update( $id, array $data ) 
     {
@@ -146,7 +146,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function delete( $id )
     {
@@ -154,7 +154,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function forceDelete( $id )
     {
@@ -162,7 +162,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function find( $id )
     {
@@ -180,7 +180,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function findBy( $attributes, $value ) 
     {
@@ -190,7 +190,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function first() 
     {
@@ -201,7 +201,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function count()
     {
@@ -211,7 +211,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function lists($value, $key, $distinct = false )
     {
@@ -228,7 +228,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function setNestedData( array $nestedData )
     {
@@ -238,7 +238,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function getNestedData()
     {
@@ -246,7 +246,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     private function applyNestedData()
     {
@@ -259,7 +259,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function setQuery( Builder $query )
     {
@@ -269,7 +269,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function getQuery()
     {
@@ -308,7 +308,7 @@ abstract class Repository {
     }
 
     /**
-     * See HomeBargain\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function getModel()
     {
