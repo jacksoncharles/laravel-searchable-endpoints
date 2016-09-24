@@ -207,15 +207,16 @@ class FooBarsController extends Controller
         if( Input::has('nested') ) $this->repository->setNestedData( Input::get('nested') );
 
         if( Input::has('order') ) $this->repository->setOrder( Input::get('order') );
-  
-        $columns = Input::has('columns') ? Input::get('columns') : ['*'];
-        if( Input::has('rows') && (int)Input::get('rows') > 0 )
+
+        if( Input::has('columns') ) $this->repository->setColumns( Input::get('columns') );
+
+        if( Input::has('rows') )
         {
-            $data = $this->repository->paginate( Input::get('rows'), $columns, Input::has('trash') )->toArray();
+            $data = $this->repository->setRows()->paginate( Input::has('trash') )->toArray();
         } 
         else
         {
-            $data['data'] = $this->repository->all( $columns, Input::has('trash') )->toArray();
+            $data['data'] = $this->repository->all( Input::has('trash') )->toArray();
         }
 
         return response()->json( $data, 200 );
