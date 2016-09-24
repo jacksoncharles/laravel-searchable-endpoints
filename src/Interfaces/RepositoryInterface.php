@@ -133,7 +133,7 @@ interface RepositoryInterface
      * @param integer $rows
      * @return $this
      */ 
-    public function setRows();
+    public function setRows( array $rows );
 
     /**
      * Standard setter for class property $columns
