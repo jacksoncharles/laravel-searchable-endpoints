@@ -405,7 +405,7 @@ abstract class Repository {
      */
     private function getColumns()
     {
-        return (integer)$this->columns;
+        return $this->columns;
     }
 
     /**
