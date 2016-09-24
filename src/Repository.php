@@ -391,7 +391,7 @@ abstract class Repository {
      * @param Integer Columns to be returned
      * @return $this
      */
-    public function setColumns( $columns )
+    public function setColumns( array $columns )
     {
         $this->columns = $columns;
 

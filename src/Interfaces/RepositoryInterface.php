@@ -141,5 +141,5 @@ interface RepositoryInterface
      * @param string $columns 
      * @return $this
      */ 
-    public function setColumns();
+    public function setColumns( array $columns );
 }
