@@ -368,7 +368,7 @@ abstract class Repository {
      * @param Integer Number of rows
      * @return $this
      */
-    public function setRows( $rows )
+    public function setRows( array $rows )
     {
         $this->rows = $rows;
 
