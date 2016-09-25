@@ -10,8 +10,7 @@ return [
     'default_database' => 'testing',
     'testing' => [
       'adapter' => 'sqlite',
-      'name' => __DIR__.'/database.sqlite',
-      'memory' => true
+      'database' => ':memory:'
     ]
   ]
 ];

@@ -13,7 +13,8 @@
         "illuminate/events": "^5.2",
         "illuminate/database": "^5.2",
         "mockery/mockery": "dev-master@dev",
-        "robmorgan/phinx": "^0.6.4"
+        "robmorgan/phinx": "^0.6.4",
+        "fzaninotto/faker": "^1.6"
     },
     "autoload": {
         "psr-4": {

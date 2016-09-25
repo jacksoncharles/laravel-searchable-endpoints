@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class FooBarModel extends Model {
+class FooBar extends Model {
 
 
 

@@ -22,7 +22,7 @@ class RepositoryTest extends TestCase {
 
         $this->createDatabaseConnection();
 
-        $this->mock = m::mock('\WebConfection\Repositories\Tests\Models\FooBarModel');
+        $this->mock = m::mock('\WebConfection\Repositories\Tests\Models\FooBar');
 
         $this->repository = new \Webconfection\Repositories\Tests\Repositories\FooBarRepository( new App );
     }

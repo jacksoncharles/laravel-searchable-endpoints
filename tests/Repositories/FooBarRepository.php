@@ -6,6 +6,6 @@ class FooBarRepository extends Repository {
 
 	public function model()
 	{
-		return 'WebConfection\Repositories\Tests\FooBarModel';
+		return 'WebConfection\Repositories\Tests\Models\FooBar';
 	}
 }
