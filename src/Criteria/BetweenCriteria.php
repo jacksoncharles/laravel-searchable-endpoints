@@ -1,7 +1,7 @@
-<?php namespace WebConfection\LaravelRepositories\Criteria;
+<?php namespace WebConfection\Repositories\Criteria;
 
-use WebConfection\LaravelRepositories\Interfaces\CriteriaInterface;
-use WebConfection\LaravelRepositories\Criteria\Criteria;
+use WebConfection\Repositories\Interfaces\CriteriaInterface;
+use WebConfection\Repositories\Criteria\Criteria;
 
 class BetweenCriteria extends Criteria implements CriteriaInterface {
 

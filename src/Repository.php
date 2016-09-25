@@ -1,13 +1,13 @@
-<?php namespace WebConfection\LaravelRepositories;
+<?php namespace WebConfection\Repositories;
 
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-use WebConfection\LaravelRepositories\Interfaces\AbstractInterface;
-use WebConfection\LaravelRepositories\Exceptions\RepositoryException;
-use WebConfection\LaravelRepositories\Traits\ParameterTrait;
-use WebConfection\LaravelRepositories\Criteria\OrderByCriteria;
+use WebConfection\Repositories\Interfaces\AbstractInterface;
+use WebConfection\Repositories\Exceptions\RepositoryException;
+use WebConfection\Repositories\Traits\ParameterTrait;
+use WebConfection\Repositories\Criteria\OrderByCriteria;
 
 abstract class Repository {
 

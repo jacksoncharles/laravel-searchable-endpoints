@@ -1,6 +1,4 @@
-<?php
-
-require __DIR__.'/../vendor/autoload.php';
+<?php namespace WebConfection\Repositories\Tests;
 
 use Illuminate\Database\Eloquent\Model;
 

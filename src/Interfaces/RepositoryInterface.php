@@ -1,4 +1,4 @@
-<?php namespace WebConfection\LaravelRepositories\Interfaces;
+<?php namespace WebConfection\Repositories\Interfaces;
 
 interface RepositoryInterface 
 {

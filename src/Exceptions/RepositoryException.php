@@ -1,4 +1,4 @@
-<?php namespace WebConfection\LaravelRepositories\Exceptions;
+<?php namespace WebConfection\Repositories\Exceptions;
 
 use Exception;
 

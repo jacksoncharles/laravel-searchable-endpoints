@@ -1,6 +1,6 @@
-<?php namespace WebConfection\LaravelRepositories\Criteria;
+<?php namespace WebConfection\Repositories\Criteria;
 
-use WebConfection\LaravelRepositories\Interfaces\CriteriaInterface;
+use WebConfection\Repositories\Interfaces\CriteriaInterface;
 
 class Criteria {
 

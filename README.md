@@ -15,8 +15,8 @@ Extend your repository to use the abtract Repository and implement the Repositor
 a namespaced string to your associated model.
 
 ```
-    use WebConfection\LaravelRepositories\Repository;
-    use WebConfection\LaravelRepositories\Interfaces\RepositoryInterface;
+    use WebConfection\Repositories\Repository;
+    use WebConfection\Repositories\Interfaces\RepositoryInterface;
 
     class MyRepository extends Repository implements RepositoryInterface
     {
@@ -185,7 +185,7 @@ the repository into the __construct of my controller.
 
 ```
 ...
-use WebConfection\LaravelRepositories\Criteria\OrderByCriteria;
+use WebConfection\Repositories\Criteria\OrderByCriteria;
 
 class FooBarsController extends Controller
 {

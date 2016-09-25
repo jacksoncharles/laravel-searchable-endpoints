@@ -1,18 +1,18 @@
-<?php namespace WebConfection\LaravelRepositories\Traits;
+<?php namespace WebConfection\Repositories\Traits;
 
-use WebConfection\LaravelRepositories\Exceptions\RepositoryException;
+use WebConfection\Repositories\Exceptions\RepositoryException;
 
-use WebConfection\LaravelRepositories\Criteria\BetweenCriteria;
-use WebConfection\LaravelRepositories\Criteria\EqualsCriteria;
-use WebConfection\LaravelRepositories\Criteria\GreaterThanCriteria;
-use WebConfection\LaravelRepositories\Criteria\GreaterThanEqualsCriteria;
-use WebConfection\LaravelRepositories\Criteria\InArrayCriteria;
-use WebConfection\LaravelRepositories\Criteria\LessThanCriteria;
-use WebConfection\LaravelRepositories\Criteria\LessThanEqualsCriteria;
-use WebConfection\LaravelRepositories\Criteria\LikeCriteria;
-use WebConfection\LaravelRepositories\Criteria\NotLikeCriteria;
-use WebConfection\LaravelRepositories\Criteria\OrEqualsCriteria;
-use WebConfection\LaravelRepositories\Criteria\OrLikeCriteria;
+use WebConfection\Repositories\Criteria\BetweenCriteria;
+use WebConfection\Repositories\Criteria\EqualsCriteria;
+use WebConfection\Repositories\Criteria\GreaterThanCriteria;
+use WebConfection\Repositories\Criteria\GreaterThanEqualsCriteria;
+use WebConfection\Repositories\Criteria\InArrayCriteria;
+use WebConfection\Repositories\Criteria\LessThanCriteria;
+use WebConfection\Repositories\Criteria\LessThanEqualsCriteria;
+use WebConfection\Repositories\Criteria\LikeCriteria;
+use WebConfection\Repositories\Criteria\NotLikeCriteria;
+use WebConfection\Repositories\Criteria\OrEqualsCriteria;
+use WebConfection\Repositories\Criteria\OrLikeCriteria;
 
 
 trait ParameterTrait {

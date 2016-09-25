@@ -1,14 +1,17 @@
-<?php
+<?php namespace WebConfection\Repositories\Tests;
 
-require __DIR__.'/../vendor/autoload.php';
+use WebConfection\Repositories\Repository;
 
-use WebConfection\LaravelRepositories\Repositories\AbstractRepository;
-
-class TestRepository extends AbstractRepository {
+class TestRepository extends Repository {
 
     public function __construct( $model )
     {
         $this->setModel( $model );
         parent::__construct();        
     }
+
+	public function model()
+	{
+		return 'WebConfection\Repositories\Tests\TestModel';
+	}
 }

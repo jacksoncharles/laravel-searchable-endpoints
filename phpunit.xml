@@ -10,7 +10,7 @@
          stopOnFailure="false"
          syntaxCheck="false">
     <testsuites>
-        <testsuite name="API Responder Test Suite">
+        <testsuite name="Laravel Repository Test Suite">
             <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
