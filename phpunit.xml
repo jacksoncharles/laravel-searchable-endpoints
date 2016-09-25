@@ -8,10 +8,9 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         syntaxCheck="false"
-         DB_CONNECTION="sqlite">
+         syntaxCheck="false">
     <testsuites>
-        <testsuite name="Laravel Repository Test Suite">
+        <testsuite name="Laravel Repositories Test Suite">
             <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>

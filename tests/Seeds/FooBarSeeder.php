@@ -16,7 +16,6 @@ class FooBarSeeder extends AbstractSeed
     {
         $data = array(
           array(
-              'id'          => 1,
               'body'        => 'foobar',
               'created_at'  => date('Y-m-d H:i:s'),
           )
@@ -31,8 +30,9 @@ class FooBarSeeder extends AbstractSeed
         for ($i = 0; $i < 10; $i++) {
           $data[] = [
               'body'            => $faker->word(),
-              'created'       => date('Y-m-d H:i:s')
+              'created_at'       => date('Y-m-d H:i:s')
           ];
+          echo "inserted\n";
         }
 
         $this->insert('foobars', $data);              

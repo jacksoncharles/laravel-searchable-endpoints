@@ -25,6 +25,5 @@ environments:
 
     testing:
         adapter: sqlite
-        name: 'database.sqlite'
-        memory: true
+        name: 'tests/database.sqlite'
         charset: utf8
