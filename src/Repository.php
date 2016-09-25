@@ -59,7 +59,7 @@ abstract class Repository {
      *
      * @var string
      */    
-    private $columns = '*';
+    private $columns = ['*'];
 
     /**
      * Flag to deltermine of the current model uses the softDelete trait enabling us to
