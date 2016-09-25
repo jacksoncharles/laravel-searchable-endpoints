@@ -12,7 +12,8 @@
         "phpunit/phpunit": "4.0.*",
         "illuminate/events": "^5.2",
         "illuminate/database": "^5.2",
-        "mockery/mockery": "dev-master@dev"
+        "mockery/mockery": "dev-master@dev",
+        "robmorgan/phinx": "^0.6.4"
     },
     "autoload": {
         "psr-4": {
