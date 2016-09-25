@@ -17,7 +17,7 @@ class FooBarSeeder extends AbstractSeed
         $data = array(
           array(
               'body'        => 'foobar',
-              'created_at'  => date('Y-m-d H:i:s'),
+              'created_at'  => date('Y-m-d H:i:s')
           )
         );
 
@@ -25,6 +25,7 @@ class FooBarSeeder extends AbstractSeed
         $foobars->insert($data)
               ->save();
 
+        /*
         $faker = Faker\Factory::create();
         $data = [];
         for ($i = 0; $i < 10; $i++) {
@@ -35,6 +36,7 @@ class FooBarSeeder extends AbstractSeed
           echo "inserted\n";
         }
 
-        $this->insert('foobars', $data);              
+        $this->insert('foobars', $data)->save();              
+        */
     }
 }

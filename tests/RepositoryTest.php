@@ -24,10 +24,11 @@ class RepositoryTest extends Test {
 
     public function testAllMethod()
     {
-        $result = FooBar::all();
+        //$result = FooBar::all();
+        $result = $this->repository->all();
         var_dump( $result );
         die();
-        $result = $this->repository->all();
+        
         $this->assertTrue( $count == 3 );
     }
 }

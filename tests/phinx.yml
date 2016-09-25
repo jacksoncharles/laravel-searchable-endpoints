@@ -26,4 +26,3 @@ environments:
     testing:
         adapter: sqlite
         name: 'tests/database.sqlite'
-        charset: utf8
