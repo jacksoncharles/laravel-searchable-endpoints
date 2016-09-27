@@ -2,10 +2,10 @@
 
 use WebConfection\Repositories\Repository;
 
-class FooBarRepository extends Repository {
+class FooRepository extends Repository {
 
 	public function model()
 	{
-		return 'WebConfection\Repositories\Tests\Models\FooBar';
+		return 'WebConfection\Repositories\Tests\Models\Foo';
 	}
 }

@@ -16,10 +16,64 @@ class Test extends TestCase {
 
     protected $repository;
 
+    private $foos;
+
+    private $bars;
+
+    private $faker;
+
     public function setUp() 
     {
-
         $this->createDatabaseConnection();
+        
+        $this->faker = \Faker\Factory::create();
+
+        $this->foos = [
+            [
+                'body'          =>  'Foo1',
+                'created_at'    =>  $this->faker->dateTimeThisYear()
+            ],
+            [
+                'body'          =>  'Foo2',
+                'created_at'    =>  $this->faker->dateTimeThisYear()
+            ],
+            [
+                'body'          =>  'Foo3',
+                'created_at'    =>  $this->faker->dateTimeThisYear()
+            ],
+            [
+                'body'          =>  'Foo4',
+                'created_at'    =>  $this->faker->dateTimeThisYear()
+            ],
+            [
+                'body'          =>  'Foo5',
+                'created_at'    =>  $this->faker->dateTimeThisYear()
+            ]
+        ];
+
+        $this->bars = [
+            [
+                'body'          =>  'Bar1',
+                'created_at'    =>  $this->faker->dateTimeThisYear()
+            ],
+            [
+                'body'          =>  'Bar2',
+                'created_at'    =>  $this->faker->dateTimeThisYear()
+            ],
+            [
+                'body'          =>  'Bar3',
+                'created_at'    =>  $this->faker->dateTimeThisYear()
+            ],
+            [
+                'body'          =>  'Bar4',
+                'created_at'    =>  $this->faker->dateTimeThisYear()
+            ],
+            [
+                'body'          =>  'Bar5',
+                'created_at'    =>  $this->faker->dateTimeThisYear()
+            ]
+        ];
+
     }
     
     protected function createDatabaseConnection()
@@ -41,4 +95,17 @@ class Test extends TestCase {
         // Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
         $capsule->bootEloquent();        
     }
+
+    protected function getFoos( $rows )
+    {
+        $foos = $this->foos;
+        return array_slice( $foos, 0, $rows );
+    }
+
+    protected function getBars( $rows )
+    {
+        $bars = $this->bars;
+        return array_slice( $bars, 0, $rows );
+    }
+    
 }

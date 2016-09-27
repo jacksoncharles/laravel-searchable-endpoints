@@ -261,7 +261,7 @@ abstract class Repository {
     /**
      * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
-    public function setQuery( Builder $query )
+    private function setQuery( Builder $query )
     {
       $this->query = $query;
 
@@ -271,7 +271,7 @@ abstract class Repository {
     /**
      * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
-    public function getQuery()
+    private function getQuery()
     {
       return $this->query;
     }

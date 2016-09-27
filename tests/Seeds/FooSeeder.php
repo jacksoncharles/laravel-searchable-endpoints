@@ -2,7 +2,7 @@
 
 use Phinx\Seed\AbstractSeed;
 
-class FooBarSeeder extends AbstractSeed
+class FooSeeder extends AbstractSeed
 {
     /**
      * Run Method.
@@ -16,16 +16,15 @@ class FooBarSeeder extends AbstractSeed
     {
         $data = array(
           array(
-              'body'        => 'foobar',
+              'body'        => 'foo',
               'created_at'  => date('Y-m-d H:i:s')
           )
         );
 
-        $foobars = $this->table('foobars');
-        $foobars->insert($data)
+        $foos = $this->table('foos');
+        $foos->insert($data)
               ->save();
 
-        /*
         $faker = Faker\Factory::create();
         $data = [];
         for ($i = 0; $i < 10; $i++) {
@@ -37,6 +36,5 @@ class FooBarSeeder extends AbstractSeed
         }
 
         $this->insert('foobars', $data)->save();              
-        */
     }
 }

@@ -53,6 +53,8 @@ trait ParameterTrait {
                     break;
             }
         }
+
+        return $this;
     }
 
     /**

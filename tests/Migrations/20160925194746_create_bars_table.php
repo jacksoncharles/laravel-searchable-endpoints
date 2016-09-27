@@ -2,7 +2,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class CreateFooBarsTable extends AbstractMigration
+class CreateBarsTable extends AbstractMigration
 {
     /**
      * Write your reversible migrations using this method.
@@ -29,12 +29,11 @@ class CreateFooBarsTable extends AbstractMigration
      */
     public function up()
     {
-        // create the table
-        $table = $this->table('foobars');
-        $table->addColumn('id', 'integer')
-            ->addColumn('body', 'string')
-            ->addColumn('created_at', 'datetime')
-            ->create();
+        $foobars = $this->table('bars');
+        $foobars
+              ->addColumn('body', 'string', array('limit' => 255))
+              ->addColumn('created_at', 'datetime')
+              ->save();
     }
 
     /**
