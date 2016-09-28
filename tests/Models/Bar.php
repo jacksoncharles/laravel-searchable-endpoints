@@ -1,8 +1,11 @@
 <?php namespace WebConfection\Repositories\Tests\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bar extends Model {
+
+    use SoftDeletes;
 
     /**
      * @var string

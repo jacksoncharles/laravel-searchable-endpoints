@@ -6,7 +6,7 @@ use WebConfection\Repositories\Tests\Test;
 use WebConfection\Repositories\Tests\Models\Foo;
 use WebConfection\Repositories\Tests\Models\Bar;
 
-class CriteriaTest extends Test {
+class ParameterTest extends Test {
 
     public function setUp() 
     {
@@ -20,20 +20,20 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\BetweenCriteria
+     * @covers \WebConfection\Repositories\Criteria\BetweenParameter
      * @test
      */
-    public function test_between_criteria()
+    public function test_between_parameter()
     {
         $this->assertTrue(false);
     }
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\EqualsCriteria
+     * @covers \WebConfection\Repositories\Criteria\EqualsParameter
      * @test
      */
-    public function test_equals_criteria()
+    public function test_equals_parameter()
     {
         $result = $this->repository->setParameters([
             'equal' => [
@@ -48,10 +48,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\GreaterThanCriteria
+     * @covers \WebConfection\Repositories\Criteria\GreaterThanParameter
      * @test
      */
-    public function test_greater_than_criteria()
+    public function test_greater_than_parameter()
     {
         $result = $this->repository->setParameters([
             'gt' => [
@@ -66,10 +66,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\GreaterThanEqualsCriteria
+     * @covers \WebConfection\Repositories\Criteria\GreaterThanEqualsParameter
      * @test
      */
-    public function test_greater_than_equals_criteria()
+    public function test_greater_than_equals_parameter()
     {
 
        $results = $this->repository->setParameters([
@@ -91,20 +91,20 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\InArrayCriteria
+     * @covers \WebConfection\Repositories\Criteria\InArrayParameter
      * @test
      */
-    public function test_in_array_criteria()
+    public function test_in_array_parameter()
     {
         $this->assertTrue(false);
     }
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\LessThanCriteria
+     * @covers \WebConfection\Repositories\Criteria\LessThanParameter
      * @test
      */
-    public function test_less_than_criteria()
+    public function test_less_than_parameter()
     {
        $results = $this->repository->setParameters([
             'lt' => [
@@ -125,10 +125,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\LessThanEqualsCriteria
+     * @covers \WebConfection\Repositories\Criteria\LessThanEqualsParameter
      * @test
      */
-    public function test_less_than_equals_criteria()
+    public function test_less_than_equals_parameter()
     {
        $results = $this->repository->setParameters([
             'lte' => [
@@ -149,10 +149,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\LikeCriteria
+     * @covers \WebConfection\Repositories\Criteria\LikeParameter
      * @test
      */
-    public function test_like_criteria()
+    public function test_like_parameter()
     {
         $result = $this->repository->setParameters([
             'like' => [
@@ -167,10 +167,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\NotLikeCriteria
+     * @covers \WebConfection\Repositories\Criteria\NotLikeParameter
      * @test
      */
-    public function test_not_like_criteria()
+    public function test_not_like_parameter()
     {
        $results = $this->repository->setParameters([
             'not_like' => [
@@ -191,38 +191,35 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\OrderByCriteria
+     * @covers \WebConfection\Repositories\Criteria\OrEqualsParameter
      * @test
      */
-    public function test_order_by_criteria()
+    public function test_or_equals_parameter()
     {
-        ////
-        /// FAILING!!!!
-        /// 
-        $result = $this->repository->setOrder(['id' => 'ASC'])->first();
-        $this->assertTrue( $result->id === 1 );
-
-        $result = $this->repository->setOrder(['id' => 'DESC'])->first();
-
-        $this->assertTrue( $result->id === 5 );
+       $results = $this->repository->setParameters([
+            'or_equal' => [
+                'id' => [
+                    '1',
+                    '3'
+                ]
+            ]
+        ])
+        ->setOrder(['id' => 'ASC'])
+        ->all();
+        
+        $this->assertTrue( count( $results ) === 2 );
+        for ( $x = 0; $x < 3; $x++ )
+        {
+            $this->assertTrue( $results[$x]->id == ( $x + 1 ) );
+        }
     }
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\OrEqualsCriteria
+     * @covers \WebConfection\Repositories\Criteria\OrLikeParameter
      * @test
      */
-    public function test_or_equals_criteria()
-    {
-        $this->assertTrue(false);
-    }
-
-    /**
-     * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\OrLikeCriteria
-     * @test
-     */
-    public function test_or_like_criteria()
+    public function test_or_like_parameter()
     {
         $this->assertTrue(false);
     }

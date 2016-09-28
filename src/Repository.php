@@ -157,7 +157,7 @@ abstract class Repository {
      * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
     public function forceDelete( $id )
-    {
+    {   
         return $this->getModel()->findOrFail( $id )->forceDelete( $id );
     }
 
@@ -271,7 +271,7 @@ abstract class Repository {
     /**
      * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
-    private function getQuery()
+    public function getQuery()
     {
       return $this->query;
     }

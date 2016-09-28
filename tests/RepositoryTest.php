@@ -86,7 +86,20 @@ class RepositoryTest extends Test {
      */
     public function test_delete_method()
     {
-        $this->assertTrue(false);
+        // Check for soft deletion
+        Foo::insert( $this->getFoos(5) );
+
+
+        $beforeCount = Foo::count();
+
+        $this->repository->delete(3);
+
+        $afterCount = Foo::count();
+        $this->assertTrue( $beforeCount === ( $afterCount + 1 ) );
+
+        $afterCount = Foo::withTrashed()->count();
+        $this->assertTrue( $beforeCount === $afterCount );
+
     }
 
     /**
@@ -96,7 +109,13 @@ class RepositoryTest extends Test {
      */
     public function test_forceDelete_method()
     {
-        $this->assertTrue(false);
+        Foo::insert( $this->getFoos(5) );
+        $beforeCount = Foo::count();
+
+        $this->repository->forceDelete(3);
+
+        $afterCount = Foo::count();
+        $this->assertTrue( $beforeCount === ( $afterCount + 1 ) );
     }
 
     /**

@@ -33,6 +33,8 @@ class CreateBarsTable extends AbstractMigration
         $foobars
               ->addColumn('body', 'string', array('limit' => 255))
               ->addColumn('created_at', 'datetime')
+              ->addColumn('updated_at', 'datetime')
+              ->addColumn('deleted_at', 'datetime')
               ->save();
     }
 
