@@ -23,16 +23,6 @@ class RepositoryTest extends Test {
 
     /**
      * @group repository
-     * @covers ::model
-     * @test
-     */
-    public function test_model_method()
-    {
-        $this->assertTrue(false);
-    }
-
-    /**
-     * @group repository
      * @covers ::all
      * @test
      */
@@ -76,7 +66,16 @@ class RepositoryTest extends Test {
      */
     public function test_update_method()
     {
-        $this->assertTrue(false);
+        Foo::insert( $this->getFoos(5) );
+
+        $foo = $this->repository->find( 1 )->getModel()->toArray();
+        $foo['body'] = 'Updated';
+
+        $this->repository->update( $foo['id'], $foo );
+        $foo = $this->repository->find( 1 )->getModel()->toArray();
+
+        $this->assertTrue( $foo['body'] == 'Updated' );
+
     }
 
     /**
@@ -89,7 +88,6 @@ class RepositoryTest extends Test {
         // Check for soft deletion
         Foo::insert( $this->getFoos(5) );
 
-
         $beforeCount = Foo::count();
 
         $this->repository->delete(3);
@@ -99,7 +97,6 @@ class RepositoryTest extends Test {
 
         $afterCount = Foo::withTrashed()->count();
         $this->assertTrue( $beforeCount === $afterCount );
-
     }
 
     /**
@@ -290,16 +287,6 @@ class RepositoryTest extends Test {
      * @test
      */
     public function test_pushCriteria_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::setOrder
-     * @test
-     */
-    public function test_setOrder_method()
     {
         $this->assertTrue(false);
     }

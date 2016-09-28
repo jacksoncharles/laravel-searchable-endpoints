@@ -17,6 +17,13 @@ class Foo extends Model {
     protected $table = 'foos';
 
     /**
+     * @var array
+     *
+     * Columns that can be filled by mass assigment
+     */
+    protected $fillable = ['id','body'];
+    
+    /**
      * WebConfection\Repositories\Tests\Models\Bar associated to the current Foo.
      *
      * @return WebConfection\Repositories\Tests\Models\Bar
