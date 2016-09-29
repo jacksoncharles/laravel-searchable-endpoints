@@ -75,7 +75,6 @@ class RepositoryTest extends Test {
         $foo = $this->repository->find( 1 )->getModel()->toArray();
 
         $this->assertTrue( $foo['body'] == 'Updated' );
-
     }
 
     /**
@@ -243,26 +242,6 @@ class RepositoryTest extends Test {
 
    /**
      * @group repository
-     * @covers ::setModel
-     * @test
-     */
-    public function test_setModel_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::getModel
-     * @test
-     */
-    public function test_getModel_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
      * @covers ::getModelName
      * @test
      */
@@ -303,30 +282,10 @@ class RepositoryTest extends Test {
 
    /**
      * @group repository
-     * @covers ::getRows
-     * @test
-     */
-    public function test_getRows_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
      * @covers ::setColumns
      * @test
      */
     public function test_setColumns_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::getColumns
-     * @test
-     */
-    public function test_getColumns_method()
     {
         $this->assertTrue(false);
     }
