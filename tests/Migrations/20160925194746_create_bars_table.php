@@ -33,7 +33,7 @@ class CreateBarsTable extends AbstractMigration
         $bars
               ->addColumn('id', 'integer')
               ->addColumn('foo_id', 'integer')
-              ->addColumn('body', 'string', array('limit' => 255))
+              ->addColumn('body', 'string', ['limit' => 255])
               ->addColumn('created_at', 'datetime')
               ->addColumn('updated_at', 'datetime')
               ->addColumn('deleted_at', 'datetime')

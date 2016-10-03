@@ -120,9 +120,18 @@ class RepositoryTest extends Test {
     {
         Foo::insert( $this->getFoos(5) );
 
-        $result = $this->repository->lists('id','title');
+        $results = $this->repository->lists('id','body');
 
-        $this->assertTrue(false);
+        $this->assertTrue( count( $results ) === 5 );
+
+        $counter = 1;
+        foreach ( $results as $key => $value )
+        {
+            $this->assertTrue( $key == $counter );
+            $this->assertTrue( $value == 'Foo'.$counter );
+
+            $counter++;
+        }
     }
 
     /**
@@ -148,13 +157,14 @@ class RepositoryTest extends Test {
     {
         Foo::insert( $this->getFoos(5) );
 
-        $foo = $this->repository->find( 1 )->getModel()->toArray();
+        $foo = $this->repository->find( 1 )->toArray();
         $foo['body'] = 'Updated';
 
-        $this->repository->update( $foo['id'], $foo );
-        $foo = $this->repository->find( 1 )->getModel()->toArray();
+        $foo_updated = $this->repository->update( $foo['id'], $foo );
+        $foo = $this->repository->find( $foo['id'] );
 
-        $this->assertTrue( $foo['body'] == 'Updated' );
+        $this->assertTrue( $foo_updated );
+        $this->assertTrue( $foo->body == 'Updated' );
     }
 
     /**

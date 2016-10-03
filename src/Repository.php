@@ -195,7 +195,7 @@ abstract class Repository implements RepositoryInterface, ParameterInterface {
     /**
      * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
-    public function lists($value, $key, $distinct = false )
+    public function lists( $key, $value )
     {
         $this->query = $this->model->newQuery(); // Create a new query object
         $this->applyCriteria(); // Apply any criteria
@@ -205,20 +205,15 @@ abstract class Repository implements RepositoryInterface, ParameterInterface {
         
         $response = [];
 
-        if( $distinct )
-        {
-
-            $results = $this->query->distinct()->get( $this->columns );  
-        }
-        else
-        {
-            $results = $this->query->get( $this->columns );
-        }
+        $results = $this->query->get( $this->columns )->toArray();
 
         foreach( $results as $result )
         {
-            $response[$result->$key] = $result->$value;
+
+            $response[$result[$key]] = $result[$value];
         }
+
+        return $response;
     }
 
     /**
@@ -234,7 +229,7 @@ abstract class Repository implements RepositoryInterface, ParameterInterface {
      */
     public function update( $id, array $data ) 
     {
-        return $this->model->update( $data );
+        return $this->model->findOrFail( $id )->update( $data );
     }
 
     /**

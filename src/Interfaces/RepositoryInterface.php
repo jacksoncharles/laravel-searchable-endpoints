@@ -74,7 +74,7 @@ interface RepositoryInterface
      * @param  boolean $distinct
      * @return array
      */
-    public function lists($value, $key, $distinct = false );
+    public function lists( $key, $value );
 
     /**
      * Create a new instance in permanent storage and assign results to model property.

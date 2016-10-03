@@ -29,8 +29,8 @@ class CreateFoosTable extends AbstractMigration
      */
     public function up()
     {
-        $foobars = $this->table('foos');
-        $foobars
+        $foos = $this->table('foos');
+        $foos
               ->addColumn('body', 'string', array('limit' => 255))
               ->addColumn('created_at', 'datetime')
               ->addColumn('updated_at', 'datetime')
