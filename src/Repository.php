@@ -215,16 +215,27 @@ abstract class Repository {
      */
     public function lists($value, $key, $distinct = false )
     {
+        $response = [];
+
+        $this->setColumns([$value,$key]);
+
         $this->applyCriteria();
 
         if( $distinct )
         {
-            return $this->getQuery()->distinct()->lists( $value, $key );  
+
+            $results = $this->getQuery()->distinct()->get( $this->getColumns() );  
         }
         else
         {
-            return $this->getQuery()->lists( $value, $key );
+            $results = $this->getQuery()->get( $this->getColumns() );
         }
+
+        foreach( $results as $result )
+        {
+            $response[$result->$key] = $result->$value;
+        }
+        dd( $response );
     }
 
     /**

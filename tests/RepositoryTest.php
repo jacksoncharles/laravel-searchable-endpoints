@@ -177,6 +177,11 @@ class RepositoryTest extends Test {
      */
     public function test_lists_method()
     {
+        Foo::insert( $this->getFoos(5) );
+
+        $result = $this->repository->lists('id','title');
+
+        dd( $result );
         $this->assertTrue(false);
     }
 
@@ -266,26 +271,6 @@ class RepositoryTest extends Test {
      * @test
      */
     public function test_pushCriteria_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::setRows
-     * @test
-     */
-    public function test_setRows_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::setColumns
-     * @test
-     */
-    public function test_setColumns_method()
     {
         $this->assertTrue(false);
     }
