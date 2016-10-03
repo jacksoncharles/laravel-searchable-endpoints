@@ -28,7 +28,7 @@ class RepositoryTest extends Test {
      */
     public function is_model_method_working()
     {
-        $this->assertTrue( false );
+        $this->assertTrue( $this->repository->model() === 'WebConfection\Repositories\Tests\Models\Foo' );
     }
 
     /**
@@ -50,8 +50,78 @@ class RepositoryTest extends Test {
      * @covers ::paginate
      * @test
      */
-    public function test_paginate_method()
+    public function is_paginate_method_working()
     {
+        $this->assertTrue(false);
+    }
+
+    /**
+     * @group repository
+     * @covers ::find
+     * @test
+     */
+    public function is_find_method_working()
+    {
+        Foo::insert( $this->getFoos(4) );
+
+        $result = $this->repository->find(2);
+        
+        $this->assertTrue( $result->id === 2 );
+    }
+
+    /**
+     * @group repository
+     * @covers ::findBy
+     * @test
+     */
+    public function is_findBy_method_working()
+    {
+        Foo::insert( $this->getFoos(4) );
+
+        $result = $this->repository->findBy(['body' => 'Foo3']);
+        
+        $this->assertTrue( $result->id === 3 );
+    }
+
+    /**
+     * @group repository
+     * @covers ::first
+     * @test
+     */
+    public function is_first_method_working()
+    {
+        Foo::insert( $this->getFoos(5) );
+
+        $result = $this->repository->first();
+        
+        $this->assertTrue( $result->id === 1 );
+    }
+
+    /**
+     * @group repository
+     * @covers ::count
+     * @test
+     */
+    public function is_count_method_working()
+    {
+        Foo::insert( $this->getFoos(5) );
+
+        $result = $this->repository->count();
+
+        $this->assertTrue( $result === 5 );
+    }
+
+    /**
+     * @group repository
+     * @covers ::lists
+     * @test
+     */
+    public function is_lists_method_working()
+    {
+        Foo::insert( $this->getFoos(5) );
+
+        $result = $this->repository->lists('id','title');
+
         $this->assertTrue(false);
     }
 
@@ -60,13 +130,13 @@ class RepositoryTest extends Test {
      * @covers ::create
      * @test
      */
-    public function test_create_method()
+    public function is_create_method_working()
     {
         $beforeCount = Foo::count();
-        $this->repository->create( $this->getFoos(1) );
+        $result = $this->repository->create( $this->getFoos(1) );
         $afterCount = Foo::count();
 
-        $this->assertTrue( $beforeCount === ( $afterCount + 1 ) );
+        $this->assertTrue( $beforeCount == ( $afterCount - 1 ) );
     }
 
     /**
@@ -74,7 +144,7 @@ class RepositoryTest extends Test {
      * @covers ::update
      * @test
      */
-    public function test_update_method()
+    public function is_update_method_working()
     {
         Foo::insert( $this->getFoos(5) );
 
@@ -92,7 +162,7 @@ class RepositoryTest extends Test {
      * @covers ::delete
      * @test
      */
-    public function test_delete_method()
+    public function is_delete_method_working()
     {
         // Check for soft deletion
         Foo::insert( $this->getFoos(5) );
@@ -113,7 +183,7 @@ class RepositoryTest extends Test {
      * @covers ::forceDelete
      * @test
      */
-    public function test_forceDelete_method()
+    public function is_forceDelete_method_working()
     {
         Foo::insert( $this->getFoos(5) );
         $beforeCount = Foo::count();
@@ -122,176 +192,5 @@ class RepositoryTest extends Test {
 
         $afterCount = Foo::count();
         $this->assertTrue( $beforeCount === ( $afterCount + 1 ) );
-    }
-
-    /**
-     * @group repository
-     * @covers ::find
-     * @test
-     */
-    public function test_find_method()
-    {
-        Foo::insert( $this->getFoos(4) );
-
-        $result = $this->repository->find(2);
-        
-        $this->assertTrue( $result->id === 2 );
-    }
-
-    /**
-     * @group repository
-     * @covers ::findBy
-     * @test
-     */
-    public function test_findBy_method()
-    {
-        Foo::insert( $this->getFoos(4) );
-
-        $result = $this->repository->findBy(['body' => 'Foo3']);
-        
-        $this->assertTrue( $result->id === 3 );
-    }
-
-    /**
-     * @group repository
-     * @covers ::first
-     * @test
-     */
-    public function test_first_method()
-    {
-        Foo::insert( $this->getFoos(5) );
-
-        $result = $this->repository->first();
-        
-        $this->assertTrue( $result->id === 1 );
-    }
-
-    /**
-     * @group repository
-     * @covers ::count
-     * @test
-     */
-    public function test_count_method()
-    {
-        Foo::insert( $this->getFoos(5) );
-
-        $result = $this->repository->count();
-
-        $this->assertTrue( $result === 5 );
-    }
-
-    /**
-     * @group repository
-     * @covers ::lists
-     * @test
-     */
-    public function test_lists_method()
-    {
-        Foo::insert( $this->getFoos(5) );
-
-        $result = $this->repository->lists('id','title');
-
-        dd( $result );
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::setNestedData
-     * @test
-     */
-    public function test_setNestedData_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::getNestedData
-     * @test
-     */
-    public function test_getNestedData_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::applyNestedData
-     * @test
-     */
-    public function test_applyNestedData_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::setQuery
-     * @test
-     */
-    public function test_setQuery_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::getQuery
-     * @test
-     */
-    public function test_getQuery_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::makeModel
-     * @test
-     */
-    public function test_makeModel_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::getModelName
-     * @test
-     */
-    public function test_getModelName_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::getCriteria
-     * @test
-     */
-    public function test_getCriteria_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::pushCriteria
-     * @test
-     */
-    public function test_pushCriteria_method()
-    {
-        $this->assertTrue(false);
-    }
-
-   /**
-     * @group repository
-     * @covers ::applyCriteria
-     * @test
-     */
-    public function test_applyCriteria_method()
-    {
-        $this->assertTrue(false);
     }
 }

@@ -53,22 +53,27 @@ class Test extends TestCase {
 
         $this->bars = [
             [
+                'foo_id'        =>  1,
                 'body'          =>  'Bar1',
                 'created_at'    =>  $this->faker->dateTimeThisYear()
             ],
             [
+                'foo_id'        =>  2,
                 'body'          =>  'Bar2',
                 'created_at'    =>  $this->faker->dateTimeThisYear()
             ],
             [
+                'foo_id'        =>  3,
                 'body'          =>  'Bar3',
                 'created_at'    =>  $this->faker->dateTimeThisYear()
             ],
             [
+                'foo_id'        =>  4,
                 'body'          =>  'Bar4',
                 'created_at'    =>  $this->faker->dateTimeThisYear()
             ],
             [
+                'foo_id'        =>  5,
                 'body'          =>  'Bar5',
                 'created_at'    =>  $this->faker->dateTimeThisYear()
             ]

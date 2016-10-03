@@ -154,13 +154,18 @@ abstract class Repository implements RepositoryInterface, ParameterInterface {
     /**
      * See WebConfection\Illuminate\Interfaces\AbstractInterface
      */
-    public function findBy( $attributes, $value ) 
+    public function findBy( array $attributes ) 
     {
         $this->query = $this->model->newQuery(); // Create a new query object
         $this->applyCriteria(); // Apply any criteria
         $this->applyNestedDataRequirements(); // Include any nested data
 
-        return $this->query->where( $attribute, '=', $value )->first( $this->columns );
+        foreach( $attributes as $key => $value )
+        {
+            $this->query->where( $key, '=', $value )->first( $this->columns );    
+        }
+
+        return $this->query->first();
     }
 
     /**
@@ -284,7 +289,7 @@ abstract class Repository implements RepositoryInterface, ParameterInterface {
      *
      * @return  string
      */
-    public function getModelName()
+    private function getModelName()
     {
       $function = new \ReflectionClass( $this->model );      
       return $function->getShortName();

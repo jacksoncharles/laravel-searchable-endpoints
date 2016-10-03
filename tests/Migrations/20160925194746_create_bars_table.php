@@ -29,8 +29,10 @@ class CreateBarsTable extends AbstractMigration
      */
     public function up()
     {
-        $foobars = $this->table('bars');
-        $foobars
+        $bars = $this->table('bars');
+        $bars
+              ->addColumn('id', 'integer')
+              ->addColumn('foo_id', 'integer')
               ->addColumn('body', 'string', array('limit' => 255))
               ->addColumn('created_at', 'datetime')
               ->addColumn('updated_at', 'datetime')

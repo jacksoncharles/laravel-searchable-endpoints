@@ -15,6 +15,31 @@ class CriteriaTest extends Test {
         $this->repository = new \Webconfection\Repositories\Tests\Repositories\FooRepository( new App );
         Foo::truncate();
         Foo::insert( $this->getFoos(5) );
+        Bar::insert( $this->getBars(5) );
+    }
+
+    /**
+     * @group criteria
+     * @covers \WebConfection\Repositories\Repository\applyNestedCriteria
+     * @test
+     */
+    public function is_with_parameter_working()
+    {
+        $result = $this->repository->setParameters([
+            'equal' => [
+                'id' => [
+                    1
+                ]
+            ],
+            'with' => [
+                'bars'
+            ]
+        ])->first();
+
+        $this->assertTrue( count( $result ) === 1 );
+
+        $this->assertTrue( isSet( $result['bars'] ) );
+        $this->assertTrue( count( $result['bars'] ) );
     }
 
     /**

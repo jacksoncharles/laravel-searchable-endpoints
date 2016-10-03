@@ -29,6 +29,9 @@ trait ParameterTrait {
         {
             switch( strtolower( $rule ) )
             {
+                case 'with':
+                    $this->with = $columns;
+                    break;
                 case 'order_by':
                     $this->criteria[] = new OrderByCriteria( ['column' => key( $columns ), 'direction' => array_shift( $columns ) ] );
                     break;

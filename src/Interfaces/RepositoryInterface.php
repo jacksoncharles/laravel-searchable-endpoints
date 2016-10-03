@@ -48,8 +48,34 @@ interface RepositoryInterface
      * @param array $columns
      * @return mixed
      */
-    public function findBy( $attribute, $value );
+    public function findBy( array $attributes );
+
+    /**
+     * Return the first occurence that matches the criteria passed.
+     * 
+     * @param array $columns
+     * 
+     * @return mixed
+     */
+    public function first();
+
+    /**
+     * Return a count of the current query
+     * 
+     * @return integer
+     */
+    public function count();
  
+    /**
+     * Returns a key/value array.
+     * 
+     * @param  mixed   $value
+     * @param  string  $key
+     * @param  boolean $distinct
+     * @return array
+     */
+    public function lists($value, $key, $distinct = false );
+
     /**
      * Create a new instance in permanent storage and assign results to model property.
      * 
@@ -84,31 +110,6 @@ interface RepositoryInterface
      * @return boolean
      */
     public function forceDelete($id);
- 
 
-    /**
-     * Return the first occurence that matches the criteria passed.
-     * 
-     * @param array $columns
-     * 
-     * @return mixed
-     */
-    public function first();
 
-    /**
-     * Return a count of the current query
-     * 
-     * @return integer
-     */
-    public function count();
-
-    /**
-     * Returns a key/value array.
-     * 
-     * @param  mixed   $value
-     * @param  string  $key
-     * @param  boolean $distinct
-     * @return array
-     */
-    public function lists($value, $key, $distinct = false );
 }

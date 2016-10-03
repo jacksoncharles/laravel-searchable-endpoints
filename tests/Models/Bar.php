@@ -19,7 +19,7 @@ class Bar extends Model {
      *
      * Columns that can be filled by mass assigment
      */
-    protected $fillable = ['id','body'];
+    protected $fillable = ['id','foo_id','body'];
 
     /**
      * WebConfection\Repositories\Tests\Models\Foo associated to the current Bar.
