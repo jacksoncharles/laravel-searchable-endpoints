@@ -1,17 +1,18 @@
-# Laravel/Lumen Searchable Repositories
+# Illuminate Searchable Repositories
 Easy implementation of the [Repository Pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for 
-Laravel/Lumen. In addition to the traditional repository methods there are further methods focused
-on advanced searching requirements.
+Laravel/Lumen. In addition to expected methods there is a further setParameters() method
+that can be used to build a select query using multidimensional arrays. It is specifically designed
+for advanced searching by an API endpoint.
 
 ## Installation
 Install with composer.
 
 ```
-require searchable-laravel-repositories
+require illuminate-searchable-repositories
 ```
 
 ## Usage
-Extend your repository to use the abtract Repository and implement the RepositoryInterface. Then include the "model()" method returning
+Extend your repository to use WebConfection\Repositories\Repository and implement the WebConfection\Repositories\Interfaces\RepositoryInterface. Then include the model() method returning
 a namespaced string to your associated model.
 
 ```
@@ -42,6 +43,16 @@ Methods are not limited to the listing below; Further details can be found insid
  
     public function paginate($perPage = 15, $columns = array('*'), $withTrash = false );
  
+    public function find($id, $columns = array('*'));
+ 
+    public function findBy($field, $value, $columns = array('*'));
+
+    public function first( $columns = array('*') )
+
+    public function count();
+
+    public function lists( $key, $value );
+
     public function create(array $data);
  
     public function update(array $data, $id);
@@ -49,22 +60,16 @@ Methods are not limited to the listing below; Further details can be found insid
     public function delete($id);
 
     public function forceDelete($id);
+
+    public function setParameters( array $parameters );
  
-    public function find($id, $columns = array('*'));
- 
-    public function findBy($field, $value, $columns = array('*'));
-
-	public function first( $columns = array('*') )
-
-    public function count();
-
-    public function lists($value, $key, $distinct = false );
 ```
 
-## Search Criteria
-The [parameter trait](https://github.com/WebConfection/package-laravel-repositories/tree/master/src/Traits) is enabled by default and allows you to pass a multi-dimensional array of key/values into your repository using the "setParameters" method which will then be used to build the query. The key of each array maps to a searchable item (eg: database column) in permanent storage.
+## Parameter Trait
+The [parameter trait](https://github.com/WebConfection/illuminate-searchable-repositories) enables you to pass a multi-dimensional array into your repository using the setParameters() method. The parameter will then be used to build your query and the results
+can be retrieved used of any the repository methods. 
 
-The following comparison operators are supported
+The following comparison operators are supported. Where the key of each array maps to a searchable item (eg: database column) in permanent storage.
 
 #### like
 All keys must contain their associated value.
@@ -185,7 +190,6 @@ the repository into the __construct of my controller.
 
 ```
 ...
-use WebConfection\Repositories\Criteria\OrderByCriteria;
 
 class FooBarsController extends Controller
 {
@@ -204,19 +208,13 @@ class FooBarsController extends Controller
 
         if( Input::has('parameters') ) $this->repository->setParameters( Input::get('parameters') );
         
-        if( Input::has('nested') ) $this->repository->setNestedData( Input::get('nested') );
-
-        if( Input::has('order') ) $this->repository->setOrder( Input::get('order') );
-
-        if( Input::has('columns') ) $this->repository->setColumns( Input::get('columns') );
-
         if( Input::has('rows') )
         {
-            $data = $this->repository->setRows()->paginate( Input::has('trash') )->toArray();
+            $data = $this->repository->paginate( Input::get('rows'), Input::has('trash') )->toArray();
         } 
         else
         {
-            $data['data'] = $this->repository->all( Input::has('trash') )->toArray();
+            $data = $this->repository->all( Input::has('trash') )->toArray();
         }
 
         return response()->json( $data, 200 );
@@ -224,9 +222,6 @@ class FooBarsController extends Controller
 ```
 
 
-
-### Todo
-1. Unit tests
 
 ### Contributors
 [Charles Jackson](https://github.com/jacksoncharles)

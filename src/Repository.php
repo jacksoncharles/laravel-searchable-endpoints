@@ -4,13 +4,12 @@ use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-use WebConfection\Repositories\Interfaces\RepositoryInterface;
 use WebConfection\Repositories\Interfaces\ParameterInterface;
 
 use WebConfection\Repositories\Exceptions\RepositoryException;
 use WebConfection\Repositories\Traits\ParameterTrait;
 
-abstract class Repository implements RepositoryInterface, ParameterInterface {
+abstract class Repository implements ParameterInterface {
 
     use ParameterTrait;
     

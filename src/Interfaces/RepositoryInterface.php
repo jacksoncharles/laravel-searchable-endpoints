@@ -110,6 +110,4 @@ interface RepositoryInterface
      * @return boolean
      */
     public function forceDelete($id);
-
-
 }
