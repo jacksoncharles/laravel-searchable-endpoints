@@ -1,8 +1,8 @@
 # Illuminate Searchable Repositories
 Easy implementation of the [Repository Pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for 
-Laravel/Lumen. In addition to expected methods there is a further setParameters() method
-that can be used to build a select query using multidimensional arrays. It is specifically designed
-for advanced searching by an API endpoint.
+the [Illuminate Database Package](https://github.com/illuminate). In addition to eleven conventional methods there is a further setParameters() solution that can be used to build a select query using multidimensional arrays. 
+
+The package is specifically designed to enable fast and easy creation of searchable API endpoints.
 
 ## Installation
 Install with composer.
