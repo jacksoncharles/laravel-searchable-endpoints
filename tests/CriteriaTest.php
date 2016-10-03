@@ -6,14 +6,13 @@ use WebConfection\Repositories\Tests\Test;
 use WebConfection\Repositories\Tests\Models\Foo;
 use WebConfection\Repositories\Tests\Models\Bar;
 
-class ParameterTest extends Test {
+class CriteriaTest extends Test {
 
     public function setUp() 
     {
         parent::setUp();
 
         $this->repository = new \Webconfection\Repositories\Tests\Repositories\FooRepository( new App );
-
         Foo::truncate();
         Foo::insert( $this->getFoos(5) );
     }
@@ -23,9 +22,46 @@ class ParameterTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\BetweenParameter
      * @test
      */
-    public function test_between_parameter()
+    public function is_between_parameter_working()
     {
-        $this->assertTrue(false);
+        $keys = [2,5];
+
+        $results = $this->repository->setParameters([
+            'between' => [
+                'id' => $keys
+            ]
+        ])->all();
+
+        $this->assertTrue( count( $results ) === 2 );
+
+        for ( $x = 0; $x < 2; $x++ )
+        {
+            $this->assertTrue( in_array( $results[$x]->id, [3,4] ) );
+        }
+    }
+
+    /**
+     * @group criteria
+     * @covers \WebConfection\Repositories\Criteria\OrderByCriteria
+     * @test
+     */
+    public function is_order_by_parameter_working()
+    {
+        $results = $this->repository->setParameters([
+            'order_by' => [
+                'id' => 'DESC'
+            ]
+        ])->all();
+        
+        $counter = 5;
+
+        foreach ( $results as $result )
+        {
+            $this->assertTrue( $result->id === $counter );
+            $counter--;
+        }
+
+        
     }
 
     /**
@@ -33,7 +69,7 @@ class ParameterTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\EqualsParameter
      * @test
      */
-    public function test_equals_parameter()
+    public function is_equals_parameter_working()
     {
         $result = $this->repository->setParameters([
             'equal' => [
@@ -51,7 +87,7 @@ class ParameterTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\GreaterThanParameter
      * @test
      */
-    public function test_greater_than_parameter()
+    public function is_greater_than_parameter_working()
     {
         $result = $this->repository->setParameters([
             'gt' => [
@@ -69,7 +105,7 @@ class ParameterTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\GreaterThanEqualsParameter
      * @test
      */
-    public function test_greater_than_equals_parameter()
+    public function is_greater_than_equals_parameter_working()
     {
 
        $results = $this->repository->setParameters([
@@ -77,9 +113,11 @@ class ParameterTest extends Test {
                 'id' => [
                     3
                 ]
+            ],
+            'order_by' => [
+                'id' => 'ASC'
             ]
         ])
-        ->setOrder(['id' => 'ASC'])
         ->all();
         
         $this->assertTrue( count( $results ) === 3 );
@@ -94,9 +132,26 @@ class ParameterTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\InArrayParameter
      * @test
      */
-    public function test_in_array_parameter()
+    public function is_in_array_parameter_working()
     {
-        $this->assertTrue(false);
+        $keys = [5,1,3];
+
+        $results = $this->repository->setParameters([
+            'in' => [
+                'id' => $keys
+            ],
+            'order_by' => [
+                'id' => 'ASC'
+            ]
+        ])
+        ->all();
+        
+        $this->assertTrue( count( $results ) === 3 );
+
+        for ( $x = 0; $x < 3; $x++ )
+        {
+            $this->assertTrue( in_array( $results[$x]->id, $keys ) );
+        }
     }
 
     /**
@@ -104,16 +159,18 @@ class ParameterTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\LessThanParameter
      * @test
      */
-    public function test_less_than_parameter()
+    public function is_less_than_parameter_working()
     {
        $results = $this->repository->setParameters([
             'lt' => [
                 'id' => [
                     3
                 ]
-            ]
+            ],
+            'order_by' => [
+                'id' => 'ASC'
+            ]            
         ])
-        ->setOrder(['id' => 'ASC'])
         ->all();
         
         $this->assertTrue( count( $results ) === 2 );
@@ -128,16 +185,18 @@ class ParameterTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\LessThanEqualsParameter
      * @test
      */
-    public function test_less_than_equals_parameter()
+    public function is_less_than_equals_parameter_working()
     {
        $results = $this->repository->setParameters([
             'lte' => [
                 'id' => [
                     3
                 ]
-            ]
+            ],
+            'order_by' => [
+                'id' => 'ASC'
+            ]            
         ])
-        ->setOrder(['id' => 'ASC'])
         ->all();
         
         $this->assertTrue( count( $results ) === 3 );
@@ -152,7 +211,7 @@ class ParameterTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\LikeParameter
      * @test
      */
-    public function test_like_parameter()
+    public function is_like_parameter_working()
     {
         $result = $this->repository->setParameters([
             'like' => [
@@ -170,16 +229,18 @@ class ParameterTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\NotLikeParameter
      * @test
      */
-    public function test_not_like_parameter()
+    public function is_not_like_parameter_working()
     {
        $results = $this->repository->setParameters([
             'not_like' => [
                 'body' => [
                     'Foo5'
                 ]
-            ]
+            ],
+            'order_by' => [
+                'id' => 'ASC'
+            ]            
         ])
-        ->setOrder(['id' => 'ASC'])
         ->all();
         
         $this->assertTrue( count( $results ) === 4 );
@@ -192,9 +253,9 @@ class ParameterTest extends Test {
     /**
      * @group criteria
      * @covers \WebConfection\Repositories\Criteria\OrEqualsParameter
-     * @test
+     * @tessst
      */
-    public function test_or_equals_parameter()
+    public function is_or_equals_parameter_working()
     {
        $results = $this->repository->setParameters([
             'or_equal' => [
@@ -202,9 +263,11 @@ class ParameterTest extends Test {
                     '1',
                     '3'
                 ]
-            ]
+            ],
+            'order_by' => [
+                'id' => 'ASC'
+            ]            
         ])
-        ->setOrder(['id' => 'ASC'])
         ->all();
         
         $this->assertTrue( count( $results ) === 2 );
@@ -219,9 +282,24 @@ class ParameterTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\OrLikeParameter
      * @test
      */
-    public function test_or_like_parameter()
+    public function is_or_like_parameter_working()
     {
-        $this->assertTrue(false);
-    }
+        $keys = [1,3];
 
+        $results = $this->repository->setParameters([
+            'or_like' => [
+                'id' => $keys
+            ],
+            'order_by' => [
+                'id' => 'ASC'
+            ]            
+        ])
+        ->all();
+        
+        $this->assertTrue( count( $results ) === 2 );
+        for ( $x = 0; $x < 2; $x++ )
+        {
+            $this->assertTrue( in_array( $results[$x]->id,  $keys ) );
+        }
+    }
 }

@@ -23,10 +23,20 @@ class RepositoryTest extends Test {
 
     /**
      * @group repository
+     * @covers ::model
+     * @test
+     */
+    public function is_model_method_working()
+    {
+        $this->assertTrue( false );
+    }
+
+    /**
+     * @group repository
      * @covers ::all
      * @test
      */
-    public function test_all_method()
+    public function is_all_method_working()
     {
         Foo::insert( $this->getFoos(4) );
 

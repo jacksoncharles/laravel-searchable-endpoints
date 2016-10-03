@@ -17,7 +17,7 @@ interface RepositoryInterface
      * @param  boolean  $withTrash 
      *
      * @return Illuminate\Database\Eloquent\Collection
-     */	
+     */ 
     public function all( $withTrash = false);
  
     /**
@@ -29,6 +29,26 @@ interface RepositoryInterface
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */ 
     public function paginate( $withTrash = false );
+
+    /**
+     * Return instance of the current model by primary key.
+     * 
+     * @param  integer $id
+     * @param  array   $columns
+     * 
+     * @return Illuminate\Database\Eloquent\Model
+     */
+    public function find($id);
+ 
+     /**
+     * Return the first occurence that matches the criteria passed.
+     * 
+     * @param $attribute
+     * @param $value
+     * @param array $columns
+     * @return mixed
+     */
+    public function findBy( $attribute, $value );
  
     /**
      * Create a new instance in permanent storage and assign results to model property.
@@ -65,25 +85,6 @@ interface RepositoryInterface
      */
     public function forceDelete($id);
  
-    /**
-     * Return instance of the current model by primary key.
-     * 
-     * @param  integer $id
-     * @param  array   $columns
-     * 
-     * @return Illuminate\Database\Eloquent\Model
-     */
-    public function find($id);
- 
-     /**
-     * Return the first occurence that matches the criteria passed.
-     * 
-     * @param $attribute
-     * @param $value
-     * @param array $columns
-     * @return mixed
-     */
-    public function findBy( $attribute, $value );
 
     /**
      * Return the first occurence that matches the criteria passed.
@@ -110,36 +111,4 @@ interface RepositoryInterface
      * @return array
      */
     public function lists($value, $key, $distinct = false );
-
-    /**
-     * Accepts an array of nested data names to be retrieved with the
-     * query
-     * 
-     * @param array $nestedData
-     * @return $this
-     */
-    public function setNestedData( array $nestedData );
-
-    /**
-     * Standard getter for the class property $model
-     * 
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public function getModel();
-
-    /**
-     * Standard setter for class property $rows
-     *
-     * @param integer $rows
-     * @return $this
-     */ 
-    public function setRows( array $rows );
-
-    /**
-     * Standard setter for class property $columns
-     *
-     * @param string $columns 
-     * @return $this
-     */ 
-    public function setColumns( array $columns = array('*') );
 }

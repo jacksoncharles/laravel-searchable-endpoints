@@ -13,7 +13,7 @@ use WebConfection\Repositories\Criteria\LikeCriteria;
 use WebConfection\Repositories\Criteria\NotLikeCriteria;
 use WebConfection\Repositories\Criteria\OrEqualsCriteria;
 use WebConfection\Repositories\Criteria\OrLikeCriteria;
-
+use WebConfection\Repositories\Criteria\OrderByCriteria;
 
 trait ParameterTrait {
 
@@ -29,11 +29,14 @@ trait ParameterTrait {
         {
             switch( strtolower( $rule ) )
             {
+                case 'order_by':
+                    $this->criteria[] = new OrderByCriteria( ['column' => key( $columns ), 'direction' => array_shift( $columns ) ] );
+                    break;
                 case 'or_like':
-                    $this->pushCriteria( new OrLikeCriteria( ['values' => $columns ] ) );
+                    $this->criteria[] = new OrLikeCriteria( ['values' => $columns ] );
                     break;
                 case 'or_equal':
-                    $this->pushCriteria( new OrEqualsCriteria( ['values' => $columns ] ) );
+                    $this->criteria[] = new OrEqualsCriteria( ['values' => $columns ] );
                     break;
                 case 'in':
                 case 'between':
@@ -72,10 +75,10 @@ trait ParameterTrait {
             switch( strtolower( $rule ) )
             {
                 case 'in':
-                    $this->pushCriteria( new InArrayCriteria([ 'column' => $column, 'value' => $values ]) );
+                    $this->criteria[] = new InArrayCriteria( [ 'column' => $column, 'value' => $values ] );
                     break;            
                 case 'between':
-                    $this->pushCriteria( new BetweenCriteria([ 'column' => $column, 'from' => array_shift( $values ), 'to' => array_shift( $values )]) );
+                    $this->criteria[] = new BetweenCriteria( [ 'column' => $column, 'from' => array_shift( $values ), 'to' => array_shift( $values )] );
                     break;
                 default:
                     throw new RepositoryException("malformed complex parameter passed into the repository");
@@ -103,25 +106,25 @@ trait ParameterTrait {
                     switch( strtolower( $rule ) )
                     {
                         case 'like':
-                            $this->pushCriteria( new LikeCriteria([ 'column' => $column, 'value' => $value ]) );
+                            $this->criteria[] = new LikeCriteria( [ 'column' => $column, 'value' => $value ] );
                             break;
                         case 'not_like':
-                            $this->pushCriteria( new NotLikeCriteria([ 'column' => $column, 'value' => $value ]) );
+                            $this->criteria[] = new NotLikeCriteria( [ 'column' => $column, 'value' => $value ] );
                             break;
                         case 'equal':
-                            $this->pushCriteria( new EqualsCriteria([ 'column' => $column, 'value' => $value ]) );
+                            $this->criteria[] = new EqualsCriteria( [ 'column' => $column, 'value' => $value ] );
                             break;            
                         case 'gte':
-                            $this->pushCriteria( new GreaterThanEqualsCriteria([ 'column' => $column, 'value' => $value ]) );
+                            $this->criteria[] = new GreaterThanEqualsCriteria( [ 'column' => $column, 'value' => $value ] );
                             break;            
                         case 'gt':
-                            $this->pushCriteria( new GreaterThanCriteria([ 'column' => $column, 'value' => $value ]) );
+                            $this->criteria[] = new GreaterThanCriteria( [ 'column' => $column, 'value' => $value ] );
                             break;            
                         case 'lte':
-                            $this->pushCriteria( new LessThanEqualsCriteria([ 'column' => $column, 'value' => $value ]) );
+                            $this->criteria[] = new LessThanEqualsCriteria([ 'column' => $column, 'value' => $value ] );
                             break;            
                         case 'lt':
-                            $this->pushCriteria( new LessThanCriteria([ 'column' => $column, 'value' => $value ]) );
+                            $this->criteria[] = new LessThanCriteria([ 'column' => $column, 'value' => $value ] );
                             break;
                         default:
                             throw new RepositoryException("malformed complex parameter passed into the repository");

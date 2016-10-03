@@ -12,8 +12,8 @@ class BetweenCriteria extends Criteria implements CriteriaInterface {
 	 */
     public function apply( $query, $repository )
     {
-        $query->where( $this->column, '>=', $this->from );
-        $query->where( $this->column, '<=', $this->to );
+        $query->where( $this->column, '>', $this->from );
+        $query->where( $this->column, '<', $this->to );
 
         return $query;
     }
