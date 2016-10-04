@@ -25,6 +25,7 @@ class CriteriaTest extends Test {
      */
     public function is_with_parameter_working()
     {
+
         $result = $this->repository->setParameters([
             'equal' => [
                 'id' => [
@@ -34,12 +35,12 @@ class CriteriaTest extends Test {
             'with' => [
                 'bars'
             ]
-        ])->first();
+        ])->first()->toArray();
 
-        $this->assertTrue( count( $result ) === 1 );
+        $this->assertTrue( isSet( $result['id'] ) );
+        $this->assertTrue( $result['id'] == 1 );
 
         $this->assertTrue( isSet( $result['bars'] ) );
-        $this->assertTrue( count( $result['bars'] ) );
     }
 
     /**

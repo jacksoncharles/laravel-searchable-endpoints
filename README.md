@@ -39,17 +39,17 @@ a namespaced string to your associated model.
 Methods are not limited to the listing below; Further details can be found inside the [interface](https://github.com/WebConfection/laravel-repositories/blob/master/src/Interfaces/AbstractInterface.php).
 
 ```
-    public function all( $columns = array('*'), $withTrash = false);
+    public function all( $columns = ['*'], $withTrash = false )
  
-    public function paginate($perPage = 15, $columns = array('*'), $withTrash = false );
+    public function paginate( $rows = 10, $columns = ['*'], $withTrash = false )
  
-    public function find($id, $columns = array('*'));
+    public function find( $id, $columns = ['*'], $withTrash = false )
  
-    public function findBy($field, $value, $columns = array('*'));
+    public function findBy( array $attributes, $columns = ['*'], $withTrash = false ) 
 
-    public function first( $columns = array('*') )
+    public function first( $columns = ['*'], $withTrash = flase ) 
 
-    public function count();
+    public function count( $withTrash = false )
 
     public function lists( $key, $value );
 

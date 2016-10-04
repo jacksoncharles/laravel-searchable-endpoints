@@ -48,20 +48,6 @@ abstract class Repository implements ParameterInterface {
     public $query = null;
 
     /**
-     * The number of rows in a paginated list
-     *
-     * @var integer
-     */    
-    public $rows = 10;
-
-    /**
-     * The columns to be returned
-     *
-     * @var string
-     */    
-    private $columns = ['*'];
-
-    /**
      * Flag to deltermine of the current model uses the softDelete trait enabling us to
      * retrieved "trashed" data.
      *
@@ -85,37 +71,35 @@ abstract class Repository implements ParameterInterface {
     }
 
     /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
      * 
      * @return string
      */
     abstract function model();
     
     /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
-    public function all( $withTrash = false )
+    public function all( $columns = ['*'], $withTrash = false )
     {
         $this->query = $this->model->newQuery (); // Create a new query object
         $this->applyCriteria (); // Apply any criteria
         $this->applyNestedDataRequirements (); // Include any nested data
 
-        
-
         if( $withTrash && $this->softDeletes )
         {
-            return $this->query->withTrashed()->get( $this->columns );
+            return $this->query->withTrashed()->get( $columns );
         }
         else
         {
-            return $this->query->get( $this->columns );
+            return $this->query->get( $columns );
         }
     }
 
     /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
-    public function paginate( $withTrash = false )
+    public function paginate( $rows = 10, $columns = ['*'], $withTrash = false )
     {
         $this->query = $this->model->newQuery(); // Create a new query object
         $this->applyCriteria(); // Apply any criteria
@@ -123,7 +107,7 @@ abstract class Repository implements ParameterInterface {
 
         if( $withTrash && $this->softDeletes )
         {
-            return $this->query->withTrashed()->paginate( $this->rows, $this->columns );    
+            return $this->query->withTrashed()->paginate( $rows, $columns );    
         }
         else
         {
@@ -132,28 +116,28 @@ abstract class Repository implements ParameterInterface {
     }
 
     /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
-    public function find( $id )
+    public function find( $id, $columns = ['*'], $withTrash = false )
     {
         $this->query = $this->model->newQuery(); // Create a new query object
         $this->applyCriteria(); // Apply any criteria
         $this->applyNestedDataRequirements(); // Include any nested data
 
-        if( $this->softDeletes )
+        if( $this->softDeletes && $withTrash )
         {
-            return $this->query->withTrashed()->findOrFail( $id, $this->columns );
+            return $this->query->withTrashed()->findOrFail( $id, $columns );
         }
         else
         {
-            return $this->query->findOrFail( $id, $this->columns );
+            return $this->query->findOrFail( $id, $columns );
         }
     }
 
     /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
-    public function findBy( array $attributes ) 
+    public function findBy( array $attributes, $columns = ['*'], $withTrash = false ) 
     {
         $this->query = $this->model->newQuery(); // Create a new query object
         $this->applyCriteria(); // Apply any criteria
@@ -164,59 +148,56 @@ abstract class Repository implements ParameterInterface {
             $this->query->where( $key, '=', $value )->first( $this->columns );    
         }
 
-        return $this->query->first();
-    }
-
-    /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
-     */
-    public function first() 
-    {
-        $this->query = $this->model->newQuery(); // Create a new query object
-        $this->applyCriteria(); // Apply any criteria
-        $this->applyNestedDataRequirements(); // Include any nested data
-
-        return $this->query->first( $this->columns );
-    }
-
-    /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
-     */
-    public function count()
-    {
-        $this->query = $this->model->newQuery(); // Create a new query object
-        $this->applyCriteria(); // Apply any criteria
-        $this->applyNestedDataRequirements(); // Include any nested data
-
-        return $this->query->count();
-    }
-
-    /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
-     */
-    public function lists( $key, $value )
-    {
-        $this->query = $this->model->newQuery(); // Create a new query object
-        $this->applyCriteria(); // Apply any criteria
-        $this->applyNestedDataRequirements(); // Include any nested data
-
-        $this->columns = [$value,$key];
-        
-        $response = [];
-
-        $results = $this->query->get( $this->columns )->toArray();
-
-        foreach( $results as $result )
+        if( $this->softDeletes && $withTrash )
         {
-
-            $response[$result[$key]] = $result[$value];
+            return $this->query->withTrashed()->first( $columns );
         }
-
-        return $response;
+        else
+        {
+            return $this->query->first( $columns );
+        }
     }
 
     /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
+     */
+    public function first( $columns = ['*'], $withTrash = flase ) 
+    {
+        $this->query = $this->model->newQuery(); // Create a new query object
+        $this->applyCriteria(); // Apply any criteria
+        $this->applyNestedDataRequirements(); // Include any nested data
+
+        if( $this->softDeletes && $withTrash )
+        {
+            return $this->query->withTrashed()->first( $columns );
+        }
+        else
+        {
+            return $this->query->first( $columns );
+        }
+    }
+
+    /**
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
+     */
+    public function count( $withTrash = false )
+    {
+        $this->query = $this->model->newQuery(); // Create a new query object
+        $this->applyCriteria(); // Apply any criteria
+        $this->applyNestedDataRequirements(); // Include any nested data
+
+        if( $this->softDeletes && $withTrash )
+        {
+            return $this->query->withTrashed()->count();
+        }
+        else
+        {
+            return $this->query->count();
+        }
+    }
+
+    /**
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
     public function create( array $data ) 
     {
@@ -224,7 +205,7 @@ abstract class Repository implements ParameterInterface {
     }
 
     /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
     public function update( $id, array $data ) 
     {
@@ -232,7 +213,7 @@ abstract class Repository implements ParameterInterface {
     }
 
     /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
     public function delete( $id )
     {
@@ -240,7 +221,7 @@ abstract class Repository implements ParameterInterface {
     }
 
     /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
     public function forceDelete( $id )
     {   
@@ -248,13 +229,13 @@ abstract class Repository implements ParameterInterface {
     }
 
     /**
-     * See WebConfection\Illuminate\Interfaces\AbstractInterface
+     * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
     private function applyNestedDataRequirements()
     {
         foreach( $this->with as $nested )
         {
-            $this->query = $this->query->with( $with );
+            $this->query = $this->query->with( $nested );
         }
 
         return $this;   

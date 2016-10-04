@@ -52,7 +52,12 @@ class RepositoryTest extends Test {
      */
     public function is_paginate_method_working()
     {
-        $this->assertTrue(false);
+        Foo::insert( $this->getFoos(5) );
+
+        $result = $this->repository->paginate(1)->toArray();
+        
+        dd( $result );
+        $this->assertTrue( count( $result ) == 4 );
     }
 
     /**
