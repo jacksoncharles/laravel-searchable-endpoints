@@ -88,8 +88,7 @@ a namespaced string to the model you just created.
 
 ```
 ### Example Controller ::index
-In the following controller::index implementation I have bound an interface to a repository and injected
-the repository into the __construct of my controller.
+In the following controller::index I have injected the repository into the __construct of my controller. It is a matter of personal preference. 
 
 ```php
 ...
