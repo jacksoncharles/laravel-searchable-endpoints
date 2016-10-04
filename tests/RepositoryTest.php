@@ -128,13 +128,32 @@ class RepositoryTest extends Test {
      * @covers ::paginate
      * @test
      */
+    public function is_paginate_page_filter_working()
+    {
+
+        Foo::insert( $this->getFoos(5) );
+
+        $result = $this->repository->paginate(1,['*'], 3)->toArray();
+
+        $this->assertTrue( $result['total'] == 5 );
+        $this->assertTrue( $result['current_page'] == 3 );
+        $this->assertTrue( $result['last_page'] == 5 );
+        $this->assertTrue( isSet( $result['data'] ) );
+        $this->assertTrue( count( $result['data'] ) == 1 );
+    }
+
+    /**
+     * @group repository
+     * @covers ::paginate
+     * @test
+     */
     public function is_paginate_method_trash_filter_working()
     {
 
         Foo::insert( $this->getFoos(5) );
         Foo::destroy(1);
 
-        $result = $this->repository->paginate(1, ['*'], true )->toArray();
+        $result = $this->repository->paginate(1, ['*'], 1, true )->toArray();
 
         $this->assertTrue( $result['total'] == 5 );
         $this->assertTrue( $result['current_page'] == 1 );

@@ -98,7 +98,7 @@ Further details can be found inside the [interface](https://github.com/webconfec
 ```
     public function all( $columns = ['*'], $withTrash = false )
  
-    public function paginate( $rows = 10, $columns = ['*'], $withTrash = false )
+    public function paginate( $rows = 10, $columns = ['*'], $page = false, $withTrash = false )
  
     public function find( $id, $columns = ['*'], $withTrash = false )
  

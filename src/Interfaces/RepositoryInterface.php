@@ -25,10 +25,11 @@ interface RepositoryInterface
      * 
      * @param  integer $rows
      * @param  array   $columns
+     * @param  mixed   $page
      * @param  boolean $withTrash
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */ 
-    public function paginate( $rows = 10, $columns = ['*'], $withTrash = false );
+    public function paginate( $rows = 10, $columns = ['*'], $page = false, $withTrash = false );
 
     /**
      * Return instance of the current model by primary key.

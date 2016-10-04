@@ -3,7 +3,7 @@
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
-
+use Illuminate\Pagination\Paginator;
 use WebConfection\Repositories\Interfaces\ParameterInterface;
 
 use WebConfection\Repositories\Exceptions\RepositoryException;
@@ -99,15 +99,22 @@ abstract class Repository implements ParameterInterface {
     /**
      * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
-    public function paginate( $rows = 10, $columns = ['*'], $withTrash = false )
+    public function paginate( $rows = 10, $columns = ['*'], $page = false, $withTrash = false )
     {
         $this->query = $this->model->newQuery(); // Create a new query object
         $this->applyCriteria(); // Apply any criteria
         $this->applyNestedDataRequirements(); // Include any nested data
 
+        if( (boolean)$page )
+        {
+            Paginator::currentPageResolver(function() use ($page) {
+                return $page;
+            });
+        }
+
         if( $withTrash && $this->softDeletes )
         {
-            return $this->query->withTrashed()->paginate( $rows, $columns );    
+            return $this->query->withTrashed()->paginate( $rows, $columns );
         }
         else
         {
