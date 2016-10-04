@@ -3,6 +3,24 @@ The ParameterTrait is enabled by default and allows you to pass a multi-dimensio
 
 The following comparison operators are supported
 
+##### with
+Array of relationship names. Deeply nested data can be retrieved using the DOT notation.
+```
+	array(
+		'with'	=>	array(
+			'bars'
+		)
+	);
+```
+##### order_by
+Key/value pair of column name and direction.
+```
+	array(
+		'order_by'	=>	array(
+			'Foo'	=>	'DESC'
+	);
+```
+
 ##### like
 All keys must contain their associated value.
 

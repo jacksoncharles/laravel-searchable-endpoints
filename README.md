@@ -1,8 +1,7 @@
 # Illuminate Searchable Repositories
-Easy implementation of the [Repository Pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for 
-the [Illuminate Database Package](https://github.com/illuminate). In addition to eleven conventional methods there is a further setParameters() solution that can be used to build a select query using multidimensional arrays. 
+Implementation of the [Repository Pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for 
+the [Illuminate Database Package](https://github.com/illuminate) specifically designed to facilitate the easy creation of searchable API endpoints. In addition to ten conventional methods there are a further 13 search criteria which can be passed to your repository as multidimensional arrays using the setParameters() solution. 
 
-The package is specifically designed to enable fast and easy creation of searchable API endpoints.
 
 ## Installation
 Install with composer.
@@ -12,7 +11,7 @@ composer require illuminate-searchable-repositories
 ```
 
 ## Usage
-Extend your repository to use WebConfection\Repositories\Repository and implement the WebConfection\Repositories\Interfaces\RepositoryInterface. Then include the model() method returning
+Extend your repository to use WebConfection\Repositories\Repository and implement the WebConfection\Repositories\Interfaces\RepositoryInterface. Then create a model() method returning
 a namespaced string to your associated model.
 
 ```
@@ -51,11 +50,9 @@ Further details can be found inside the [interface](https://github.com/webconfec
 
     public function count( $withTrash = false )
 
-    public function lists( $key, $value );
-
     public function create( array $data ) 
  
-    public function update( $id, array $data ) 
+    public function update( $id, array $data )
  
     public function delete( $id )
 
@@ -64,11 +61,27 @@ Further details can be found inside the [interface](https://github.com/webconfec
 ```
 
 ## Parameter Trait
-The [parameter trait](https://github.com/WebConfection/illuminate-searchable-repositories) enables you to pass a multi-dimensional array into your repository using the setParameters() method. The parameter will then be used to build your query and the results
-can be retrieved used of any the repository methods. 
+The [parameter trait](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/src/Traits/ParameterTrait.php) enables you to pass a multi-dimensional array into your repository using the setParameters() method. The parameter will then be used to build your query and the results can be retrieved using of any the convential repository methods: all, paginate, find, findBy, first and count.
 
-The following comparison operators are supported. Where the key of each array maps to a searchable item (eg: database column) in permanent storage.
+Thirteen comparison operators are currently supported. Where the key of each array maps to a searchable item (eg: database column) in permanent storage. Further examples can be found inside the [test suite](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/tests/CriteriaTest.php)
 
+##### with
+Array of relationship names. Deeply nested data can be retrieved using the DOT notation.
+```
+    array(
+        'with'  =>  array(
+            'bars'
+        )
+    );
+```
+##### order_by
+Key/value pair of column name and direction.
+```
+    array(
+        'order_by'  =>  array(
+            'Foo'   =>  'DESC'
+    );
+```
 #### like
 All keys must contain their associated value.
 
@@ -124,6 +137,22 @@ All keys must match their associated value.
             )
     );
 ``` 
+#### or_equal
+Any of the keys match the value
+
+```
+    array(
+        'or_equal' =>  array(
+            'Foo'   =>  array(
+                'Foo1'
+            ),
+            'Bar'   =>  array(
+                'Bar1'
+            )
+
+    );
+``` 
+
 #### gte
 All keys must contain a value greater than or equal too their associated value.
 
@@ -168,12 +197,12 @@ All keys must contain a value less than their associated value.
             )
     );
 ```     
-#### in
+#### in_array
 The key contains any of the values listed in their associated value(s)
 
 ```
     array(
-        'in'    =>  array(
+        'in_array'    =>  array(
             'Foo'   =>  array(
                 'Bar1',
                 'Bar2',
@@ -181,9 +210,21 @@ The key contains any of the values listed in their associated value(s)
             )
     );
 ``` 
+#### in
+The key contains any of the values listed in their associated value(s)
+
+```
+    array(
+        'between'    =>  array(
+            'Foo'   =>  array(
+                1,
+                5
+            )
+    );
+``` 
 
 ## Example Implementation
-In the following controller implementation I have bound an interface to a repository and injected
+In the following controller::index implementation I have bound an interface to a repository and injected
 the repository into the __construct of my controller.
 
 ```

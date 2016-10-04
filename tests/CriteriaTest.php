@@ -23,7 +23,7 @@ class CriteriaTest extends Test {
      * @covers \WebConfection\Repositories\Repository\applyNestedCriteria
      * @test
      */
-    public function is_with_parameter_working()
+    public function is_with_criterion_working()
     {
 
         $result = $this->repository->setParameters([
@@ -45,10 +45,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\BetweenParameter
+     * @covers \WebConfection\Repositories\Criteria\BetweenCriteria
      * @test
      */
-    public function is_between_parameter_working()
+    public function is_between_criterion_working()
     {
         $keys = [2,5];
 
@@ -71,7 +71,7 @@ class CriteriaTest extends Test {
      * @covers \WebConfection\Repositories\Criteria\OrderByCriteria
      * @test
      */
-    public function is_order_by_parameter_working()
+    public function is_order_by_criterion_working()
     {
         $results = $this->repository->setParameters([
             'order_by' => [
@@ -92,10 +92,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\EqualsParameter
+     * @covers \WebConfection\Repositories\Criteria\EqualsCriteria
      * @test
      */
-    public function is_equals_parameter_working()
+    public function is_equal_criterion_working()
     {
         $result = $this->repository->setParameters([
             'equal' => [
@@ -110,10 +110,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\GreaterThanParameter
+     * @covers \WebConfection\Repositories\Criteria\GreaterThanCriteria
      * @test
      */
-    public function is_greater_than_parameter_working()
+    public function is_greater_than_criterion_working()
     {
         $result = $this->repository->setParameters([
             'gt' => [
@@ -128,10 +128,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\GreaterThanEqualsParameter
+     * @covers \WebConfection\Repositories\Criteria\GreaterThanEqualsCriteria
      * @test
      */
-    public function is_greater_than_equals_parameter_working()
+    public function is_greater_than_equals_criterion_working()
     {
 
        $results = $this->repository->setParameters([
@@ -155,15 +155,15 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\InArrayParameter
+     * @covers \WebConfection\Repositories\Criteria\InArrayCriteria
      * @test
      */
-    public function is_in_array_parameter_working()
+    public function is_in_array_criterion_working()
     {
         $keys = [5,1,3];
 
         $results = $this->repository->setParameters([
-            'in' => [
+            'in_array' => [
                 'id' => $keys
             ],
             'order_by' => [
@@ -182,10 +182,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\LessThanParameter
+     * @covers \WebConfection\Repositories\Criteria\LessThanCriteria
      * @test
      */
-    public function is_less_than_parameter_working()
+    public function is_less_than_criterion_working()
     {
        $results = $this->repository->setParameters([
             'lt' => [
@@ -208,10 +208,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\LessThanEqualsParameter
+     * @covers \WebConfection\Repositories\Criteria\LessThanEqualsCriteria
      * @test
      */
-    public function is_less_than_equals_parameter_working()
+    public function is_less_than_equals_criterion_working()
     {
        $results = $this->repository->setParameters([
             'lte' => [
@@ -234,10 +234,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\LikeParameter
+     * @covers \WebConfection\Repositories\Criteria\LikeCriteria
      * @test
      */
-    public function is_like_parameter_working()
+    public function is_like_criterion_working()
     {
         $result = $this->repository->setParameters([
             'like' => [
@@ -252,10 +252,10 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\NotLikeParameter
+     * @covers \WebConfection\Repositories\Criteria\NotLikeCriteria
      * @test
      */
-    public function is_not_like_parameter_working()
+    public function is_not_like_criterion_working()
     {
        $results = $this->repository->setParameters([
             'not_like' => [
@@ -278,17 +278,16 @@ class CriteriaTest extends Test {
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\OrEqualsParameter
+     * @covers \WebConfection\Repositories\Criteria\OrEqualsCriteria
      * @tessst
      */
-    public function is_or_equals_parameter_working()
+    public function is_or_equal_criterion_working()
     {
-       $results = $this->repository->setParameters([
+        $keys = [1,3];
+
+        $results = $this->repository->setParameters([
             'or_equal' => [
-                'id' => [
-                    '1',
-                    '3'
-                ]
+                'id' => $keys
             ],
             'order_by' => [
                 'id' => 'ASC'
@@ -299,16 +298,16 @@ class CriteriaTest extends Test {
         $this->assertTrue( count( $results ) === 2 );
         for ( $x = 0; $x < 3; $x++ )
         {
-            $this->assertTrue( $results[$x]->id == ( $x + 1 ) );
+            $this->assertTrue( in_array( $results[$x]->id, $keys ) );
         }
     }
 
     /**
      * @group criteria
-     * @covers \WebConfection\Repositories\Criteria\OrLikeParameter
+     * @covers \WebConfection\Repositories\Criteria\OrLikeCriteria
      * @test
      */
-    public function is_or_like_parameter_working()
+    public function is_or_like_criterion_working()
     {
         $keys = [1,3];
 

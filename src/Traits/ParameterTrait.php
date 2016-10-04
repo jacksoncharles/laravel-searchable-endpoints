@@ -41,7 +41,7 @@ trait ParameterTrait {
                 case 'or_equal':
                     $this->criteria[] = new OrEqualsCriteria( ['values' => $columns ] );
                     break;
-                case 'in':
+                case 'in_array':
                 case 'between':
                     $this->complexComparisons( $rule, $columns );
                     break;            
@@ -77,7 +77,7 @@ trait ParameterTrait {
         {
             switch( strtolower( $rule ) )
             {
-                case 'in':
+                case 'in_array':
                     $this->criteria[] = new InArrayCriteria( [ 'column' => $column, 'value' => $values ] );
                     break;            
                 case 'between':

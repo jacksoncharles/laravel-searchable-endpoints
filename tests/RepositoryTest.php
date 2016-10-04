@@ -39,7 +39,7 @@ class RepositoryTest extends Test {
     public function is_all_method_working()
     {
         Foo::insert( $this->getFoos(5) );
-        Foo::delete( 1 );
+        Foo::destroy( 1 );
 
         $result = $this->repository->all();
         
@@ -374,7 +374,7 @@ class RepositoryTest extends Test {
 
         $this->repository->forceDelete(3);
 
-        $afterCount = Foo::count();
+        $afterCount = Foo::withTrashed()->count();
         $this->assertTrue( $beforeCount === ( $afterCount + 1 ) );
     }
 }
