@@ -123,7 +123,7 @@ The [parameter trait](https://github.com/webconfection/illuminate-searchable-rep
 
 Thirteen comparison operators are currently supported. Where the key of each array maps to a searchable item (eg: database column) in permanent storage. Further examples can be found inside the [test suite](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/tests/CriteriaTest.php)
 
-##### with
+#### with
 Array of relationship names. Deeply nested data can be retrieved using the DOT notation.
 ```php
     array(
@@ -132,7 +132,7 @@ Array of relationship names. Deeply nested data can be retrieved using the DOT n
         )
     );
 ```
-##### order_by
+#### order_by
 Key/value pair of column name and direction.
 ```php
     array(
