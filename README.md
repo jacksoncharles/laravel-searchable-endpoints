@@ -3,7 +3,7 @@ Implementation of the [Repository Pattern](https://bosnadev.com/2015/03/07/using
 the [Illuminate Database Package](https://github.com/illuminate) specifically designed to facilitate the easy creation of searchable API endpoints. In addition to ten conventional methods there are a further 13 search criteria which can be passed to your repository as multidimensional arrays using the setParameters() solution. 
 
 1. Installation
-2. [Implementation](Implementation)
+2. [Implementation](#-Implementation)
  1. Example Controller
 3. Methods
 4. Parameter Trait
