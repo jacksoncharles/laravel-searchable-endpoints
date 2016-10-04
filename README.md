@@ -37,6 +37,8 @@ Extend your repository to use *WebConfection\Repositories\Repository* and implem
 a namespaced string to your associated model.
 
 ```php
+    namespace App\Repositories;
+
     use WebConfection\Repositories\Repository;
     use WebConfection\Repositories\Interfaces\RepositoryInterface;
 
@@ -51,7 +53,6 @@ a namespaced string to your associated model.
         {
             return 'App\MyRepository';
         }
-    
     }
 
 ```
