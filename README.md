@@ -1,6 +1,6 @@
 # Illuminate Searchable Repositories
 Implementation of the [Repository Pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for 
-the [Illuminate Database Package](https://github.com/illuminate) specifically designed to facilitate the easy creation of searchable API endpoints. In addition to ten conventional methods there are a further 13 search criteria which can be passed to your repository as multidimensional arrays using the setParameters() solution. 
+the [Illuminate Database Package](https://github.com/illuminate) specifically designed to facilitate the easy creation of searchable API endpoints. In addition to 10 conventional methods there are a further 13 search criteria which can be passed to your repository as multidimensional arrays using the setParameters() solution. 
 
 This package has been tested against illuminate ^5.2 as used by [Laravel/Lumen 5.3](https://laravel.com/).
 
@@ -153,7 +153,7 @@ Further details can be found inside the [interface](https://github.com/webconfec
 ## Parameter Trait
 The [parameter trait](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/src/Traits/ParameterTrait.php) enables you to pass a multi-dimensional array into your repository using the setParameters() method. The parameter will then be used to build your query and the results can be retrieved using of any the conventional repository methods: *all*, *paginate*, *find*, *findBy*, *first* and *count*.
 
-Thirteen comparison operators are currently supported. Where the key of each array maps to a searchable item (eg: database column) in permanent storage. Further examples can be found inside the [test suite](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/tests/CriteriaTest.php)
+13 comparison operators are currently supported. Where the key of each array maps to a searchable item (eg: database column) in permanent storage. Further examples can be found inside the [test suite](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/tests/CriteriaTest.php)
 
 #### with
 Array of relationship names. Deeply nested data can be retrieved using the DOT notation.
