@@ -5,9 +5,9 @@ the [Illuminate Database Package](https://github.com/illuminate) specifically de
 This package has been tested against illuminate ^5.2 as used by [Laravel/Lumen 5.3](https://laravel.com/).
 
 1. <a href="#installation">Installation</a>
-2. <a href="#implementation">Implementation</a>[](#Implementation)
- 1. <a href="#Model">Model</a>
- 2. <a href="#Repository">Repository</a>
+2. <a href="#implementation">Implementation</a>
+ 1. <a href="#model">Model</a>
+ 2. <a href="#repository">Repository</a>
  3. <a href="#Example-Controller">Example Controller</a>
 3. <a href="#methods">Methods</a>
 4. <a href="#parameter-trait">Parameter Trait</a>
