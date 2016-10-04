@@ -1,6 +1,6 @@
 {
     "name": "webconfection/illuminate-searchable-repositories",
-    "description": "Illuminate database package specifically designed to facilitate the easy creation of searchable API endpoints by accepting multi-dimensional arrays to build a select statement",
+    "description": "Laravel/Lumen, Illuminate database package specifically designed to facilitate the easy creation of searchable API endpoints by accepting multi-dimensional arrays to build a select statement",
     "keywords": ["illuminate repositories laravel"],
     "license": "MIT",
     "authors": [
