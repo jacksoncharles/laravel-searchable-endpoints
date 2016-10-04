@@ -1,5 +1,5 @@
 {
-    "name": "webconfection/laravel-repositories",
+    "name": "webconfection/illuminate-searchable-repositories",
     "description": "Abstract repository",
     "keywords": ["illuminate repositories laravel"],
     "authors": [
