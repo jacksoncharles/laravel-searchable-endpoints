@@ -8,7 +8,7 @@ This package has been tested against illuminate ^5.2 as used by [Laravel/Lumen 5
 2. <a href="#implementation">Implementation</a>
  1. <a href="#model">Model</a>
  2. <a href="#repository">Repository</a>
- 3. <a href="#Example-Controller">Example Controller</a>
+ 3. <a href="#example-controller">Example Controller</a>
 3. <a href="#methods">Methods</a>
 4. <a href="#parameter-trait">Parameter Trait</a>
  1. <a href="#with">With</a>
