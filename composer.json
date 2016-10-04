@@ -22,7 +22,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "WebConfection\\Repositories\\Tests\\": "tests/"
+            "WebConfection\\Repositories\\Tests\\": "tests"
         }
     },
     "require": {
