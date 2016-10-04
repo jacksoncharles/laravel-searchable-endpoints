@@ -1,7 +1,7 @@
 {
     "name": "webconfection/laravel-repositories",
     "description": "Abstract repository",
-    "keywords": ["illuminate repositories,laravel"],
+    "keywords": ["illuminate repositories laravel"],
     "authors": [
         {
             "name": "Charles Jackson",
