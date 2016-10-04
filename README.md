@@ -2,9 +2,9 @@
 Implementation of the [Repository Pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for 
 the [Illuminate Database Package](https://github.com/illuminate) specifically designed to facilitate the easy creation of searchable API endpoints. In addition to ten conventional methods there are a further 13 search criteria which can be passed to your repository as multidimensional arrays using the setParameters() solution. 
 
-1. Installation
-2. [Implementation](#Implementation)
- 1. [Example Controller](#Example-Controller::index)
+1. <a href="#installation">Installation</a>
+2. <a href="#implementation">Implementation</a>[](#Implementation)
+ 1. <a href="#Example-Controller::index">Example Controller</a>
 3. [Methods](#Methods)
 4. [Parameter Trait](#Parameter-Trait)
 5. Tests
