@@ -111,7 +111,7 @@ abstract class Repository implements ParameterInterface {
         }
         else
         {
-            return $this->query->paginate( $this->rows, $this->columns );
+            return $this->query->paginate( $rows, $columns );
         }
     }
 
@@ -145,7 +145,7 @@ abstract class Repository implements ParameterInterface {
 
         foreach( $attributes as $key => $value )
         {
-            $this->query->where( $key, '=', $value )->first( $this->columns );    
+            $this->query->where( $key, '=', $value )->first( $columns );    
         }
 
         if( $this->softDeletes && $withTrash )
@@ -161,7 +161,7 @@ abstract class Repository implements ParameterInterface {
     /**
      * See WebConfection\Repositories\Interfaces\RepositoryInterface
      */
-    public function first( $columns = ['*'], $withTrash = flase ) 
+    public function first( $columns = ['*'], $withTrash = false ) 
     {
         $this->query = $this->model->newQuery(); // Create a new query object
         $this->applyCriteria(); // Apply any criteria

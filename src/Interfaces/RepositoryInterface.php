@@ -18,7 +18,7 @@ interface RepositoryInterface
      *
      * @return Illuminate\Database\Eloquent\Collection
      */ 
-    public function all( $withTrash = false);
+    public function all( $columns = ['*'], $withTrash = false );
  
     /**
      * Return a length-aware paginated list of model instances inside a collection.
@@ -28,7 +28,7 @@ interface RepositoryInterface
      * @param  boolean $withTrash
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */ 
-    public function paginate( $withTrash = false );
+    public function paginate( $rows = 10, $columns = ['*'], $withTrash = false );
 
     /**
      * Return instance of the current model by primary key.
@@ -38,7 +38,7 @@ interface RepositoryInterface
      * 
      * @return Illuminate\Database\Eloquent\Model
      */
-    public function find($id);
+    public function find( $id, $columns = ['*'], $withTrash = false );
  
      /**
      * Return the first occurence that matches the criteria passed.
@@ -46,36 +46,26 @@ interface RepositoryInterface
      * @param $attribute
      * @param $value
      * @param array $columns
-     * @return mixed
+     * @return Illuminate\Database\Eloquent\Model
      */
-    public function findBy( array $attributes );
+    public function findBy( array $attributes, $columns = ['*'], $withTrash = false );
 
     /**
      * Return the first occurence that matches the criteria passed.
      * 
      * @param array $columns
      * 
-     * @return mixed
+     * @return Illuminate\Database\Eloquent\Model
      */
-    public function first();
+    public function first( $columns = ['*'], $withTrash = flase );
 
     /**
      * Return a count of the current query
      * 
      * @return integer
      */
-    public function count();
+    public function count( $withTrash = false );
  
-    /**
-     * Returns a key/value array.
-     * 
-     * @param  mixed   $value
-     * @param  string  $key
-     * @param  boolean $distinct
-     * @return array
-     */
-    public function lists( $key, $value );
-
     /**
      * Create a new instance in permanent storage and assign results to model property.
      * 
@@ -83,7 +73,7 @@ interface RepositoryInterface
      * 
      * @return mixed
      */
-    public function create(array $data);
+    public function create( array $data );
 
     /**
      * Update an existing instance in permanent storage.
@@ -93,7 +83,7 @@ interface RepositoryInterface
      * @param string $attribute
      * @return mixed
      */
-    public function update($id, array $data );
+    public function update( $id, array $data );
 
     /**
      * Destroys an instance by primary key.
@@ -101,7 +91,7 @@ interface RepositoryInterface
      * @param  integer $id
      * @return boolean
      */
-    public function delete($id);
+    public function delete( $id );
 
     /**
      * Forces a hard delete by primary key
@@ -109,5 +99,5 @@ interface RepositoryInterface
      * @param  integer $id
      * @return boolean
      */
-    public function forceDelete($id);
+    public function forceDelete( $id );
 }

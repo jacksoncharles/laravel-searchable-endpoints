@@ -8,7 +8,7 @@ The package is specifically designed to enable fast and easy creation of searcha
 Install with composer.
 
 ```
-require illuminate-searchable-repositories
+composer require illuminate-searchable-repositories
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ a namespaced string to your associated model.
 ```
 
 ## Methods
-Methods are not limited to the listing below; Further details can be found inside the [interface](https://github.com/WebConfection/laravel-repositories/blob/master/src/Interfaces/AbstractInterface.php).
+Further details can be found inside the [interface](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/src/Interfaces/RepositoryInterface.php).
 
 ```
     public function all( $columns = ['*'], $withTrash = false )
@@ -53,15 +53,13 @@ Methods are not limited to the listing below; Further details can be found insid
 
     public function lists( $key, $value );
 
-    public function create(array $data);
+    public function create( array $data ) 
  
-    public function update(array $data, $id);
+    public function update( $id, array $data ) 
  
-    public function delete($id);
+    public function delete( $id )
 
-    public function forceDelete($id);
-
-    public function setParameters( array $parameters );
+    public function forceDelete( $id )
  
 ```
 
