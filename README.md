@@ -33,7 +33,7 @@ composer require illuminate-searchable-repositories
 ```
 
 ## Implementation
-Extend your repository to use WebConfection\Repositories\Repository and implement the WebConfection\Repositories\Interfaces\RepositoryInterface. Then create a model() method returning
+Extend your repository to use *WebConfection\Repositories\Repository* and implement the *WebConfection\Repositories\Interfaces\RepositoryInterface*. Then create a model() method returning
 a namespaced string to your associated model.
 
 ```php
