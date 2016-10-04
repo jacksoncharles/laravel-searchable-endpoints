@@ -4,9 +4,9 @@ the [Illuminate Database Package](https://github.com/illuminate) specifically de
 
 1. Installation
 2. [Implementation](#Implementation)
- 1. Example Controller
-3. Methods
-4. Parameter Trait
+ 1. [Example Controller](#Example-Controller::index)
+3. [Methods](#Methods)
+4. [Parameter Trait](#Parameter-Trait)
 5. Tests
 6. Contributors
 
