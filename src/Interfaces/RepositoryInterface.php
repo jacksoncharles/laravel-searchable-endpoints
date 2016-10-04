@@ -27,7 +27,7 @@ interface RepositoryInterface
      * @param  array   $columns
      * @param  mixed   $page
      * @param  boolean $withTrash
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @return Illuminate\Pagination\LengthAwarePaginator
      */ 
     public function paginate( $rows = 10, $columns = ['*'], $page = false, $withTrash = false );
 
