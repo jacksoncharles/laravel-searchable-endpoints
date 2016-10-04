@@ -2,7 +2,7 @@
 
 use Illuminate\Container\Container as App;
 
-use \WebConfection\Repositories\Tests\Test;
+use WebConfection\Repositories\Tests\Test;
 use WebConfection\Repositories\Tests\Models\Foo;
 use WebConfection\Repositories\Tests\Models\Bar;
 

@@ -78,7 +78,6 @@ class Test extends TestCase {
                 'created_at'    =>  $this->faker->dateTimeThisYear()
             ]
         ];
-
     }
     
     protected function createDatabaseConnection()
