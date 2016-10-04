@@ -326,7 +326,7 @@ The key contains a value greater than the first value and less than the second v
 
 
 ## Tests
-All unit tests are run against an SQLLite database in memory.
+All unit tests are run against an SQLite database.
 
 ## Contributors
 [Charles Jackson](https://github.com/jacksoncharles)
