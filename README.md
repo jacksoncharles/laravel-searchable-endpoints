@@ -4,11 +4,24 @@ the [Illuminate Database Package](https://github.com/illuminate) specifically de
 
 1. <a href="#installation">Installation</a>
 2. <a href="#implementation">Implementation</a>[](#Implementation)
- 1. <a href="#Example-Controller::index">Example Controller</a>
-3. [Methods](#Methods)
-4. [Parameter Trait](#Parameter-Trait)
-5. Tests
-6. Contributors
+ 1. <a href="#Example-Controller">Example Controller</a>
+3. <a href="#methods">Methods</a>
+4. <a href="#parameter-trait">Parameter Trait</a>
+ 1. <a href="#with">with</a>
+ 2. <a href="#order_by">Order By</a>
+ 3. <a href="#like">Like</a>
+ 4. <a href="#or_like">Or Like</a>
+ 5. <a href="#not_like">Not Like</a>
+ 6. <a href="#equal">Equal</a>
+ 7. <a href="#or_equal">Or Equal</a>
+ 8. <a href="#gte">Greater Than or Equal</a>
+ 9. <a href="#gt">Greater Than</a>
+ 10. <a href="#lte">Less Than or Equal</a>
+ 11. <a href="#lt">Less Than</a>
+ 12. <a href="#in_array">In Array</a>
+ 12. <a href="#between">Between</a>
+5. <a href="#tests">Tests</a>
+6. <a href="#contributors">Contributors</a>
 
 ## Installation
 Install with composer.
@@ -40,7 +53,7 @@ a namespaced string to your associated model.
     }
 
 ```
-### Example Controller::index
+### Example Controller ::index
 In the following controller::index implementation I have bound an interface to a repository and injected
 the repository into the __construct of my controller.
 
@@ -265,10 +278,22 @@ The key contains any of the values listed in their associated value(s)
             )
     );
 ``` 
+#### between
+The key contains a value greater than the first value and less than the second value.
+
+```
+    array(
+        'between'    =>  array(
+            'Foo'   =>  array(
+                1,
+                5
+            )
+    );
+``` 
 
 
 ## Tests
-All unit tests are run against an SqlLite database in memory.
+All unit tests are run against an SQLLite database in memory.
 
 ## Contributors
 [Charles Jackson](https://github.com/jacksoncharles)
