@@ -36,7 +36,7 @@ composer require illuminate-searchable-repositories
 Extend your repository to use WebConfection\Repositories\Repository and implement the WebConfection\Repositories\Interfaces\RepositoryInterface. Then create a model() method returning
 a namespaced string to your associated model.
 
-```
+```php
     use WebConfection\Repositories\Repository;
     use WebConfection\Repositories\Interfaces\RepositoryInterface;
 
@@ -59,7 +59,7 @@ a namespaced string to your associated model.
 In the following controller::index implementation I have bound an interface to a repository and injected
 the repository into the __construct of my controller.
 
-```
+```php
 ...
 
 class FooBarsController extends Controller
@@ -95,7 +95,7 @@ class FooBarsController extends Controller
 ## Methods
 Further details can be found inside the [interface](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/src/Interfaces/RepositoryInterface.php).
 
-```
+```php
     public function all( $columns = ['*'], $withTrash = false )
  
     public function paginate( $rows = 10, $columns = ['*'], $page = false, $withTrash = false )
@@ -125,7 +125,7 @@ Thirteen comparison operators are currently supported. Where the key of each arr
 
 ##### with
 Array of relationship names. Deeply nested data can be retrieved using the DOT notation.
-```
+```php
     array(
         'with'  =>  array(
             'bars'
@@ -134,7 +134,7 @@ Array of relationship names. Deeply nested data can be retrieved using the DOT n
 ```
 ##### order_by
 Key/value pair of column name and direction.
-```
+```php
     array(
         'order_by'  =>  array(
             'Foo'   =>  'DESC'
@@ -143,7 +143,7 @@ Key/value pair of column name and direction.
 #### like
 All keys must contain their associated value.
 
-```
+```php
     array(
         'like'  =>  array(
             'Foo'   =>  array(
@@ -157,7 +157,7 @@ All keys must contain their associated value.
 #### or_like
 Any of the keys contain any their associated value.
 
-```
+```php
     array(
         'or_like'   =>  array(
             'Foo'   =>  array(
@@ -172,7 +172,7 @@ Any of the keys contain any their associated value.
 #### not_like
 Non of the keys contain their associated value.
 
-```
+```php
     array(
         'not_like'   =>  array(
             'Foo'   =>  array(
@@ -187,7 +187,7 @@ Non of the keys contain their associated value.
 #### equal
 All keys must match their associated value. 
 
-```
+```php
     array(
         'equal' =>  array(
             'Foo'   =>  array(
@@ -198,7 +198,7 @@ All keys must match their associated value.
 #### or_equal
 Any of the keys match the value
 
-```
+```php
     array(
         'or_equal' =>  array(
             'Foo'   =>  array(
@@ -214,7 +214,7 @@ Any of the keys match the value
 #### gte
 All keys must contain a value greater than or equal too their associated value.
 
-```
+```php
     array(
         'gte'   =>  array(
             'Foo'   =>  array(
@@ -225,7 +225,7 @@ All keys must contain a value greater than or equal too their associated value.
 #### gt
 All keys must contain a value greater than their associated value.
 
-```
+```php
     array(
         'gt'    =>  array(
             'Foo'   =>  array(
@@ -236,7 +236,7 @@ All keys must contain a value greater than their associated value.
 #### lte
 All keys must contain a value less than or equal too their associated value.
 
-```
+```php
     array(
         'lte'   =>  array(
             'Foo'   =>  array(
@@ -247,7 +247,7 @@ All keys must contain a value less than or equal too their associated value.
 #### lt
 All keys must contain a value less than their associated value.
 
-```
+```php
     array(
         'lt'    =>  array(
             'Foo'   =>  array(
@@ -258,7 +258,7 @@ All keys must contain a value less than their associated value.
 #### in_array
 The key contains any of the values listed in their associated value(s)
 
-```
+```php
     array(
         'in_array'    =>  array(
             'Foo'   =>  array(
@@ -271,7 +271,7 @@ The key contains any of the values listed in their associated value(s)
 #### in
 The key contains any of the values listed in their associated value(s)
 
-```
+```php
     array(
         'between'    =>  array(
             'Foo'   =>  array(
@@ -283,7 +283,7 @@ The key contains any of the values listed in their associated value(s)
 #### between
 The key contains a value greater than the first value and less than the second value.
 
-```
+```php
     array(
         'between'    =>  array(
             'Foo'   =>  array(
