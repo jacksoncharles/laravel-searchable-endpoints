@@ -9,7 +9,7 @@ This package has been tested against illuminate ^5.2 as used by [Laravel/Lumen 5
  1. <a href="#Example-Controller">Example Controller</a>
 3. <a href="#methods">Methods</a>
 4. <a href="#parameter-trait">Parameter Trait</a>
- 1. <a href="#with">with</a>
+ 1. <a href="#with">With</a>
  2. <a href="#order_by">Order By</a>
  3. <a href="#like">Like</a>
  4. <a href="#or_like">Or Like</a>
