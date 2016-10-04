@@ -6,7 +6,9 @@ This package has been tested against illuminate ^5.2 as used by [Laravel/Lumen 5
 
 1. <a href="#installation">Installation</a>
 2. <a href="#implementation">Implementation</a>[](#Implementation)
- 1. <a href="#Example-Controller">Example Controller</a>
+ 1. <a href="#Model">Model</a>
+ 2. <a href="#Repository">Repository</a>
+ 3. <a href="#Example-Controller">Example Controller</a>
 3. <a href="#methods">Methods</a>
 4. <a href="#parameter-trait">Parameter Trait</a>
  1. <a href="#with">With</a>
@@ -33,8 +35,37 @@ composer require illuminate-searchable-repositories
 ```
 
 ## Implementation
-Extend your repository to use *WebConfection\Repositories\Repository* and implement the *WebConfection\Repositories\Interfaces\RepositoryInterface*. Then create a model() method returning
-a namespaced string to your associated model.
+
+### Model
+Start by creating an Eloquent model
+```php
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class FooBar extends Model {
+
+    use SoftDeletes;
+
+    /**
+     * @var string
+     *
+     * The table for the model.
+     */
+    protected $table = 'foo_bars';
+
+    /**
+     * @var array
+     *
+     * Columns that can be filled by mass assigment
+     */
+    protected $fillable = ['id','body'];
+}
+```
+### Repository
+Create a repository and extend to use *WebConfection\Repositories\Repository* and implement the *WebConfection\Repositories\Interfaces\RepositoryInterface*. Then create a model() method returning
+a namespaced string to the model you just created.
 
 ```php
     namespace App\Repositories;
@@ -42,7 +73,7 @@ a namespaced string to your associated model.
     use WebConfection\Repositories\Repository;
     use WebConfection\Repositories\Interfaces\RepositoryInterface;
 
-    class MyRepository extends Repository implements RepositoryInterface
+    class FooBarRepository extends Repository implements RepositoryInterface
     {
         /**
          * Specify Model class name
@@ -51,7 +82,7 @@ a namespaced string to your associated model.
          */
         function model()
         {
-            return 'App\MyRepository';
+            return 'App\FooBar';
         }
     }
 
