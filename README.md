@@ -151,7 +151,7 @@ Further details can be found inside the [interface](https://github.com/webconfec
 ```
 
 ## Parameter Trait
-The [parameter trait](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/src/Traits/ParameterTrait.php) enables you to pass a multi-dimensional array into your repository using the setParameters() method. The parameter will then be used to build your query and the results can be retrieved using of any the convential repository methods: all, paginate, find, findBy, first and count.
+The [parameter trait](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/src/Traits/ParameterTrait.php) enables you to pass a multi-dimensional array into your repository using the setParameters() method. The parameter will then be used to build your query and the results can be retrieved using of any the conventional repository methods: all, paginate, find, findBy, first and count.
 
 Thirteen comparison operators are currently supported. Where the key of each array maps to a searchable item (eg: database column) in permanent storage. Further examples can be found inside the [test suite](https://github.com/webconfection/illuminate-searchable-repositories/blob/master/tests/CriteriaTest.php)
 
