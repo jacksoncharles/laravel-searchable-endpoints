@@ -2,6 +2,13 @@
 Implementation of the [Repository Pattern](https://bosnadev.com/2015/03/07/using-repository-pattern-in-laravel-5/) for 
 the [Illuminate Database Package](https://github.com/illuminate) specifically designed to facilitate the easy creation of searchable API endpoints. In addition to ten conventional methods there are a further 13 search criteria which can be passed to your repository as multidimensional arrays using the setParameters() solution. 
 
+1. Installation
+2. [Implementation](Implementation)
+ 1. Example Controller
+3. Methods
+4. Parameter Trait
+5. Tests
+6. Contributors
 
 ## Installation
 Install with composer.
@@ -10,7 +17,7 @@ Install with composer.
 composer require illuminate-searchable-repositories
 ```
 
-## Usage
+## Implementation
 Extend your repository to use WebConfection\Repositories\Repository and implement the WebConfection\Repositories\Interfaces\RepositoryInterface. Then create a model() method returning
 a namespaced string to your associated model.
 
@@ -32,6 +39,42 @@ a namespaced string to your associated model.
     
     }
 
+```
+### Example Controller::index
+In the following controller::index implementation I have bound an interface to a repository and injected
+the repository into the __construct of my controller.
+
+```
+...
+
+class FooBarsController extends Controller
+{
+    public function __construct( FooBarInterface $fooBarRepository )
+    {
+       $this->repository = $fooBarRepository;
+    }
+
+    /**
+     * Return a JSON encoded listing including filters
+     *
+     * @return array
+     */
+    public function index()
+    {
+
+        if( Input::has('parameters') ) $this->repository->setParameters( Input::get('parameters') );
+        
+        if( Input::has('rows') )
+        {
+            $data = $this->repository->paginate( Input::get('rows'), Input::has('trash') )->toArray();
+        } 
+        else
+        {
+            $data = $this->repository->all( Input::has('trash') )->toArray();
+        }
+
+        return response()->json( $data, 200 );
+    }
 ```
 
 ## Methods
@@ -223,44 +266,9 @@ The key contains any of the values listed in their associated value(s)
     );
 ``` 
 
-## Example Implementation
-In the following controller::index implementation I have bound an interface to a repository and injected
-the repository into the __construct of my controller.
 
-```
-...
+## Tests
+All unit tests are run against an SqlLite database in memory.
 
-class FooBarsController extends Controller
-{
-    public function __construct( FooBarInterface $fooBarRepository )
-    {
-       $this->repository = $fooBarRepository;
-    }
-
-    /**
-     * Return a JSON encoded listing including filters
-     *
-     * @return array
-     */
-    public function index()
-    {
-
-        if( Input::has('parameters') ) $this->repository->setParameters( Input::get('parameters') );
-        
-        if( Input::has('rows') )
-        {
-            $data = $this->repository->paginate( Input::get('rows'), Input::has('trash') )->toArray();
-        } 
-        else
-        {
-            $data = $this->repository->all( Input::has('trash') )->toArray();
-        }
-
-        return response()->json( $data, 200 );
-    }
-```
-
-
-
-### Contributors
+## Contributors
 [Charles Jackson](https://github.com/jacksoncharles)
