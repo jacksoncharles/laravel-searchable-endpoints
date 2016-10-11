@@ -112,11 +112,11 @@ class FooBarsController extends Controller
         
         if( Input::has('rows') )
         {
-            $data = $this->repository->paginate( Input::get('rows'), Input::has('trash') )->toArray();
+            $data = $this->repository->paginate( Input::get('rows'), Input::get('columns'), Input::get('page'), Input::has('trash') )->toArray();
         } 
         else
         {
-            $data = $this->repository->all( Input::has('trash') )->toArray();
+            $data = $this->repository->all( , Input::get('columns'), Input::has('trash') )->toArray();
         }
 
         return response()->json( $data, 200 );
