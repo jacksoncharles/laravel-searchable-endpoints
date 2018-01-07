@@ -27,13 +27,6 @@ This package has been tested against illuminate ^5.2 as used by [Laravel/Lumen 5
 5. <a href="#tests">Tests</a>
 6. <a href="#contributors">Contributors</a>
 
-## Installation
-Install with composer.
-
-```
-composer require illuminate-searchable-repositories
-```
-
 ## Implementation
 
 ### Model
